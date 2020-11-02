@@ -1,4 +1,4 @@
-FLAGS = -pedantic-errors -std=c+11
+FLAGS = -pedantic-errors -std=c++11
 
 mainfile.o:mainfile.cpp
 	g++ $(FLAGS) -c $<
@@ -9,12 +9,13 @@ choices.o: choices.cpp
 ask.o: ask.cpp
 	g++ $(FLAGS) -c $<
 
-mainfile: 
+randgame.o: randgame.cpp
+	g++ $(FLAGS) -c $<
+
+main: main.cpp randgame.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
 	rm -f *.o
 
-.PHONY: clean 
-
-
+.PHONY: clean
