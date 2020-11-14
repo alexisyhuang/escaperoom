@@ -1,16 +1,15 @@
+//STAND ALONE CHATBOT.cpp
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "structure.h"
+#include "chatbot.h"
 using namespace std;
-struct myitem{// can add more if you wish
-    string identity;
-    string subtype;
-    int getable; // 1
-    int inPossession;
-    string location;
-};
+
+
 //functions
+/**
 int chatbot(myitem[],int);
 int getobj(string, myitem[],int);
 int help();
@@ -18,9 +17,9 @@ int hint();
 int invo(myitem[],int);
 int printallitem(int, myitem[]);
 int savegame();//to to be implemented by Alexis
-
+**/
 //fake main
-int main(){
+/**int main(){
 
   int all_items_length = 2;
   myitem all_items[10]={
@@ -28,9 +27,9 @@ int main(){
     {"food","cake",1,0,"table"}
   };
   printallitem(all_items_length,all_items);
-  while (chatbot(all_items,all_items_length));
+  while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
 }
-
+**/
 
 //chatbot function
 int chatbot(myitem all_items[],int all_items_length){

@@ -1,18 +1,11 @@
 FLAGS = -pedantic-errors -std=c++11
 
-mainfile.o:mainfile.cpp
+chatbot.o: chatbot.cpp structure.h chatbot.h
+	g++ $(FLAGS) -c $<
+fakemain.o: fakemain.cpp chatbot.cpp structure.h chatbot.h
 	g++ $(FLAGS) -c $<
 
-choices.o: choices.cpp
-	g++ $(FLAGS) -c $<
-
-ask.o: ask.cpp
-	g++ $(FLAGS) -c $<
-
-randgame.o: randgame.cpp
-	g++ $(FLAGS) -c $<
-
-main: main.cpp randgame.o
+fakemain: fakemain.o chatbot.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
