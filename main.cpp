@@ -1,6 +1,7 @@
 //#include "randgame.h"
 #include <iostream>
 #include <time.h>
+#include "chatbot.cpp"
 using namespace std;
 
 struct myitem{// can add more if you wish
@@ -13,7 +14,7 @@ struct myitem{// can add more if you wish
 
 int main(){
     myitem all_items[10];
-    int i = 5;
+    int all_items_length = 4;
     string possibleItems[2][2] = {{"steel", "wooden"}, {"cat", "dog"}};
     bool savefile = false;
     if (savefile == false) {
@@ -34,20 +35,30 @@ int main(){
       door.location = "on the wall";
         
       struct myitem specialItem;
+      struct myitem usedItem;
       if (animal.identity == "cat") {
           specialItem.identity = "fishtank";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
           specialItem.location = "table";
+          usedItem.identity = "fish";
+          specialItem.getable = 1;
+          specialItem.inPossession = 0;
+          specialItem.location = "fishtank";
         } else {
-            specialItem.identity = "turkey leg";
-            specialItem.getable = 1;
-            specialItem.inPossession = 0;
-            specialItem.location = "table";
+          specialItem.identity = "turkey leg";
+          specialItem.getable = 1;
+          specialItem.inPossession = 0;
+          specialItem.location = "table";
+          usedItem.identity = "turkey bone";
+          usedItem.getable = 1;
+          usedItem.inPossession = 0;
+          usedItem.location = "turkey leg";
         }
         all_items[0] = door;
         all_items[1] = animal;
         all_items[2] = specialItem;
+        all_items[3] = usedItem;
     } else {
         cout << "figure this out " << endl;
     }
@@ -66,6 +77,9 @@ int main(){
     cout << "Luckily, there's a number pad on the door which you could use to make your escape. You need to get home soon to submit that programming assignment, after all." << endl;
     cout << "You see a table across the room, and there's also a " << all_items[1].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
+    
+    //call chatbot.cpp
+    chatbot(all_items, all_items_length);
     
     //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
     
