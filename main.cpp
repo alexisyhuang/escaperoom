@@ -1,15 +1,34 @@
 #include "randgame.h"
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
-int main(){//I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
-  struct myitem{// can add more if you wish
+
+struct myitem{// can add more if you wish
     string identity;
     string subtype;
     int getable; // 1
   	int inPossession;
     string location;
-  };
-  int main(){
+};
+
+int main(){
+    int all_items[10];
+    bool savefile;
+    if (savefile == false) {
+      //initialise room
+      int range = 2;
+      int num = rand() % range;
+      new myitem animal;
+      animal.identity = all_items[1][num];
+      new myitem door;
+      door.identity = allitems[0][num];
+    }
+    //story segment
+  
+  
+    cout << "Let the story begin..." << endl;
+    cout << "You awaken in a small room, having no idea how you 
+    //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~daw
     int all_items_length = 2;
     myitem all_items[10]={
       {"key","silver key", 1, 0, "cat"},
