@@ -1,4 +1,4 @@
-// file where choices for randomization are held
+// file where choices for randomization will be held
 #include <bits/stdc++.h>
 using namespace std;
 /*
