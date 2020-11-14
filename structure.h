@@ -4,10 +4,13 @@ using namespace std;
 #define structure_h
 
 struct myitem{// can add more if you wish
-    string identity;
-    string subtype;
-    int getable; // 1
-    int inPossession;
+    string identity;// constant
+    string subtype;//constant
+    int exist;//whether it exist/still exist in this game
+    int getable; //0or1 depends on object property, and presence of obstacles
+    int knowexistance;//initially setted to 0, becomes 1 when user sees it
+    //if getable && knowexistance --> can be picked up
+    int inPossession;//in inventory = 1, not in= 0
     string location;
 };
 #endif
