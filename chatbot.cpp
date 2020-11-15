@@ -109,10 +109,8 @@ int savegame(int all_items_length, myitem all_items[]){
   ofstream myfile ("savefile.txt");
   if (myfile.is_open())
   {
-    myfile << "This is a line.\n";
-    myfile << "This is another line.\n";
     for(int i = 0; i < all_items_length; count ++){
-        myfile << x[count] << " " ;
+        myfile << all_items[count] << " " ;
     }
     myfile.close();
   }
