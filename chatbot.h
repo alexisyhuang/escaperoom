@@ -10,5 +10,5 @@ int help();
 int hint();
 int invo(myitem[],int);
 int printallitem(int, myitem[]);
-int savegame();//to to be implemented by Alexis
+int savegame();
 #endif
