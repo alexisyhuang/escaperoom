@@ -4,18 +4,19 @@
 #include "chatbot.h"
 using namespace std;
 
-struct myitem{// can add more if you wish
+struct myitem{
     string identity;
-    string subtype;
-    int getable; // 1
-  	int inPossession;
+    //string subtype;
+    //no need for subtype anymore because this is indicated by the position in the array? 
+    int getable; // 1 = yes, 0 = no
+  	int inPossession; // 1 = yes, 0 = no
     string location;
 };
 
 int main(){
     myitem all_items[10];
-    int all_items_length = 4;
-    string possibleItems[2][2] = {{"steel", "wooden"}, {"cat", "dog"}};
+    int all_items_length = 7;
+    string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"ugly painting", "picture of a bird"}};
     
     cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
     string saveYesNo;
@@ -29,17 +30,36 @@ int main(){
       srand(time(NULL));
       int num1 = rand() % 2;
       int num2 = rand() % 2;
+      int num3 = rand() % 2;
       struct myitem animal;
       animal.identity = possibleItems[1][num1];
-      animal.getable = 0;
+      animal.getable = 1;
       animal.inPossession = 0;
       animal.location = "floor";
       
       struct myitem door;
       door.identity = possibleItems[0][num2];
-      door.getable = 0;
+      door.getable = 1;
       door.inPossession = 0;
-      door.location = "on the wall";
+      door.location = "wall";
+      
+      struct myitem useless;
+      useless.identity = possibleItems[2][num3];
+      useless.getable = 0;
+      useless.inPossession = 0;
+      useless.location = "wall";
+      
+      struct myitem key;
+      key.identity = "key";
+      key.getable = 1;
+      key.inPossession = 0;
+      key.location = "chest";
+        
+      struct myitem chest;
+      chest.identity = "chest";
+      chest.getable = 1;
+      chest.inPossesssion = 0;
+      chest.location = "floor";
         
       struct myitem specialItem;
       struct myitem usedItem;
@@ -60,12 +80,15 @@ int main(){
           usedItem.identity = "turkey bone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
-          usedItem.location = "turkey leg";
+          usedItem.location = "table";
         }
         all_items[0] = door;
         all_items[1] = animal;
         all_items[2] = specialItem;
         all_items[3] = usedItem;
+        all_items[4] = useless;
+        all_items[5] = chest;
+        all_items[6] = key;
     } else {
         ofstream myfile ("savefile.txt");
         if (myfile.is_open()){
