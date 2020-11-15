@@ -1,0 +1,2 @@
+//example savefile
+//should contain all_items array
