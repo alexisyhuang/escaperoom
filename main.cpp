@@ -1,7 +1,7 @@
 //#include "randgame.h"
 #include <iostream>
 #include <time.h>
-#include "chatbot.cpp"
+#include "chatbot.h"
 using namespace std;
 
 struct myitem{// can add more if you wish
@@ -16,7 +16,14 @@ int main(){
     myitem all_items[10];
     int all_items_length = 4;
     string possibleItems[2][2] = {{"steel", "wooden"}, {"cat", "dog"}};
+    
+    cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
+    string saveYesNo;
+    cin >> saveYesNo;
     bool savefile = false;
+    if (saveYesNo == 'Y') {
+        savefile = true;
+    }
     if (savefile == false) {
       //initialise room
       srand(time(NULL));
@@ -60,7 +67,17 @@ int main(){
         all_items[2] = specialItem;
         all_items[3] = usedItem;
     } else {
-        cout << "figure this out " << endl;
+        ofstream myfile ("savefile.txt");
+        if (myfile.is_open()){
+            for(int i = 0; i < all_items_length; count ++){
+                myitem temp;
+                myfile >> temp;
+                all_items[i] = temp;
+            }       
+            myfile.close();
+        }
+        else cout << "Unable to open file";
+        return 0;
     }
     //story segment
     cout << i;
