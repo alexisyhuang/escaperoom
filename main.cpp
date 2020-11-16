@@ -15,10 +15,26 @@ struct myitem{
     string location;
 };
 
+void savegame(int all_items_length, myitem all_items[7]){
+  ofstream myfile; 
+  myfile.open("savefile.txt");
+  if (myfile.is_open())
+  {
+    for(int i = 0; i < all_items_length; i ++){
+        myfile << all_items[i] << " " << all_items[i].identity << " " << all_items[i].getable << " " << all_items[i].inPossession << " " << all_items[i].location << " ";
+    }
+    myfile.close();
+  } else {
+  	cout << "Unable to open file." << endl;
+	//return 0;
+  }  
+  cout<<"game saved."<<endl;
+}
+
 int main(){
     myitem all_items[10];
     int all_items_length = 7;
-    string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"ugly painting", "picture of a bird"}};
+    string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
     
     cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
     string saveYesNo;
@@ -101,7 +117,7 @@ int main(){
             }
             myfile.close();
         } else {
-            cout << "Unable to open file";
+            cout << "Unable to open file" << endl;
             return 0;
         }
         string name;
@@ -146,11 +162,13 @@ int main(){
     cout << "You see a table across the room, and there's also a " << all_items[1].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
     cout<< "On the wall, there's a " << all_items[4].identity << ". Maybe that could be useful?" << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
-    
+	
+    savegame(all_items_length, all_items);
     //call chatbot.cpp
     
     
     //chatbot(all_items, all_items_length);
+
     
     //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
     
