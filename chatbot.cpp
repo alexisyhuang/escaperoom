@@ -109,8 +109,8 @@ int savegame(int all_items_length, myitem all_items[]){
   ofstream myfile ("savefile.txt");
   if (myfile.is_open())
   {
-    for(int i = 0; i < all_items_length; count ++){
-        myfile << all_items[count] << " " << all_items[count].identity << " " << all_items[count].getable << " " << all_items[count].inPossesssion << " " << all_items[count].location << " ";
+    for(int i = 0; i < all_items_length; i ++){
+        myfile << all_items[i] << " " << all_items[i].identity << " " << all_items[i].getable << " " << all_items[i].inPossesssion << " " << all_items[i].location << " ";
     }
     myfile.close();
   }
