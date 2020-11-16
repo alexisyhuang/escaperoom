@@ -1,2 +1,1 @@
-
 door steel 1 0 wall animal cat 1 0 floor specialItem fishtank 1 0 table usedItem fish 1 0 fishtank useless poster 0 0 wall key key 1 0 animal chest chest 1 0 floor
