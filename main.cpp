@@ -141,6 +141,8 @@ int main(){
             //vectorcount++;
             name.identity = words[vectorcount];
             vectorcount++;
+	    name.catagory = words[vectorcount];
+	    vectorcount++;
             if (words[vectorcount] == "0") {
                 name.getable = 0;
             } else {
