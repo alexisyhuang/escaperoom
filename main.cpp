@@ -49,34 +49,46 @@ int main(){
       int num2 = rand() % 2;
       int num3 = rand() % 2;
       struct myitem animal;
+      animal.subtype = "animal";
       animal.identity = possibleItems[1][num1];
-      animal.getable = 1;
+      animal.getable = 0;
       animal.inPossession = 0;
-      animal.location = "floor";
+      animal.location = "room";
       
       struct myitem door;
+      door.subtype = "door";
       door.identity = possibleItems[0][num2];
       door.getable = 1;
       door.inPossession = 0;
-      door.location = "wall";
+      door.location = "room";
       
       struct myitem useless;
+      usless.subtype = "decoration";
       useless.identity = possibleItems[2][num3];
-      useless.getable = 0;
+      useless.getable = 1;
       useless.inPossession = 0;
-      useless.location = "wall";
+      useless.location = "room";
       
       struct myitem key;
+      key.subtype = "key";
       key.identity = "key";
       key.getable = 1;
       key.inPossession = 0;
-      key.location = "chest";
+      key.location = animal.identity;
         
       struct myitem chest;
+      chest.subtype = "chest";
       chest.identity = "chest";
-      chest.getable = 1;
+      chest.getable = 0;
       chest.inPossession = 0;
-      chest.location = "floor";
+      chest.location = "room";
+	    
+      struct myitem table;
+      table.subtype = "table";
+      table.identity = "table";
+      table.getable = 0;
+      table.inPossession = 0;
+      table.location = "room";
         
       struct myitem specialItem;
       struct myitem usedItem;
@@ -97,7 +109,7 @@ int main(){
           usedItem.identity = "turkeybone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
-          usedItem.location = "table";
+          usedItem.location = "turkeyleg";
         }
         all_items[0] = door;
         all_items[1] = animal;
@@ -106,6 +118,7 @@ int main(){
         all_items[4] = useless;
         all_items[5] = chest;
         all_items[6] = key;
+	all_items[7] = table;
     } else {
         string holderString;
         vector<std::string> words;
