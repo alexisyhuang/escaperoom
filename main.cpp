@@ -18,7 +18,7 @@ struct myitem{
 int main(){
     myitem all_items[10];
     int all_items_length = 7;
-    string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
+    string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"ugly painting", "picture of a bird"}};
     
     cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
     string saveYesNo;
@@ -55,7 +55,7 @@ int main(){
       key.identity = "key";
       key.getable = 1;
       key.inPossession = 0;
-      key.location = "animal";
+      key.location = "chest";
         
       struct myitem chest;
       chest.identity = "chest";
@@ -71,9 +71,9 @@ int main(){
           specialItem.inPossession = 0;
           specialItem.location = "table";
           usedItem.identity = "fish";
-          usedItem.getable = 1;
-          usedItem.inPossession = 0;
-          usedItem.location = "fishtank";
+          specialItem.getable = 1;
+          specialItem.inPossession = 0;
+          specialItem.location = "fishtank";
         } else {
           specialItem.identity = "turkey leg";
           specialItem.getable = 1;
@@ -127,7 +127,7 @@ int main(){
             vectorcount++;
             name.location = words[vectorcount];
             vectorcount++;
-            all_items[i] = name;
+	    all_items[i] = name;
         }
     }
     //story segment
