@@ -5,11 +5,8 @@ using namespace std;
 
 struct myitem{// can add more if you wish
     string catagory;//constant
-<<<<<<< HEAD
     string identity;// constant
-=======
     //int exist;//whether it exist/still exist in this game
->>>>>>> 4ba932eb987a60328fcceb6b0581aca9344d1133
     int getable; //0or1 depends on object property, and presence of obstacles
     int knowexistance;//initially setted to 0, becomes 1 when user sees it
     //if getable && knowexistance --> can be picked up
