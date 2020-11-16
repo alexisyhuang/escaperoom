@@ -1,7 +1,9 @@
 //#include "randgame.h"
 #include <iostream>
 #include <time.h>
-#include "chatbot.h"
+#include <fstream>
+#include <vector>
+//#include "chatbot.h"
 using namespace std;
 
 struct myitem{
@@ -22,7 +24,7 @@ int main(){
     string saveYesNo;
     cin >> saveYesNo;
     bool savefile = false;
-    if (saveYesNo == 'Y') {
+    if (saveYesNo == "Y") {
         savefile = true;
     }
     if (savefile == false) {
@@ -58,7 +60,7 @@ int main(){
       struct myitem chest;
       chest.identity = "chest";
       chest.getable = 1;
-      chest.inPossesssion = 0;
+      chest.inPossession = 0;
       chest.location = "floor";
         
       struct myitem specialItem;
@@ -90,30 +92,45 @@ int main(){
         all_items[5] = chest;
         all_items[6] = key;
     } else {
-        ofstream myfile ("savefile.txt");
+        string holderString;
+        vector<std::string> words;
+        ifstream myfile ("savefile.txt");
         if (myfile.is_open()){
-            for(int i = 0; i < all_items_length; count ++){
-                string name;
-                string holderString;
-                int holderInt;
-                myfile >> name;
-                myitem name;
-                myfile >> holderString;
-                name.identity = holderString;
-                myfile >> holderInt;
-                name.getable = holderInt;
-                myfile >> holderInt;
-                name.inPossession = holderInt;
-                myfile >> holderString;
-                name.location = holderString;
-            }       
+            while (myfile >> holderString) {
+                words.push_back(holderString);
+            }
             myfile.close();
+        } else {
+            cout << "Unable to open file";
+            return 0;
         }
-        else cout << "Unable to open file";
-        return 0;
+        string name;
+        string holderStringer2;
+        int vectorcount=0;
+        for(int i = 0; i < all_items_length; i ++){
+            name = words[vectorcount];
+            struct myitem name;
+            vectorcount++;
+            name.identity = words[vectorcount];
+            vectorcount++;
+            if (words[vectorcount] == "0") {
+                name.getable = 0;
+            } else {
+                name.getable = 1;
+            }
+            vectorcount++;
+            if (words[vectorcount] == "0") {
+                name.inPossession = 0;
+            } else {
+                name.inPossession = 1;
+            }
+            vectorcount++;
+            name.location = words[vectorcount];
+            all_items[i] = name;
+        }
     }
     //story segment
-    cout << i;
+    //cout << i;
     cout << all_items[0].identity << endl;
     cout << all_items[1].identity << endl;
     cout << "Let the story begin..." << endl;
@@ -130,7 +147,9 @@ int main(){
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
     
     //call chatbot.cpp
-    chatbot(all_items, all_items_length);
+    
+    
+    //chatbot(all_items, all_items_length);
     
     //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
     
