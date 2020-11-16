@@ -27,7 +27,7 @@ int savegame();//to to be implemented by Alexis
     {"food","cake",1,0,"table"}
   };
   printallitem(all_items_length,all_items);
-  while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
+  while (chatbot(all_items,all_items_lengthsave));//ADD THIS LINE TO THE REAL MAIN FUNCTION
 }
 **/
 
@@ -52,10 +52,10 @@ int chatbot(myitem all_items[],int all_items_length){
     cout<<"Do you want to save the game before quitting? [Y/N]";
     string response;
     cin>> response;
-    if (response=="Y"||response=="yes") savegame();
+    if (response=="Y"||response=="yes") //savegame();
     return 0;// quits
   }
-  if(firstword=="save") savegame();
+  if(firstword=="save") //savegame();
 
 
 
