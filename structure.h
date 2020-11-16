@@ -5,7 +5,7 @@ using namespace std;
 
 struct myitem{// can add more if you wish
     string identity;// constant
-    string subtype;//constant
+    string catagory;//constant
     int exist;//whether it exist/still exist in this game
     int getable; //0or1 depends on object property, and presence of obstacles
     int knowexistance;//initially setted to 0, becomes 1 when user sees it

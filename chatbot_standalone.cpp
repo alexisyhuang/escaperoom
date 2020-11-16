@@ -24,8 +24,12 @@ int main(){
     {"table","table",1,0,0,0,"room"},
     {"fish","fish",1,1,0,0,"table"},
     {"cat","cat",1,0,0,0,"room"},
-    {"key","silver key", 1,0,0,0, "cat"},
+    {"key","silver key", 1,0,0,0, "cat"}
   };
+  myitem table{"table","table",1,0,0,0,"room"};
+  all_items[0]=table;
+  string strigified = #all_items[0];
+  cout<<stringified;
   printallitem(all_items_length,all_items);
   while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
 }
