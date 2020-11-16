@@ -110,7 +110,7 @@ int savegame(int all_items_length, myitem all_items[]){
   if (myfile.is_open())
   {
     for(int i = 0; i < all_items_length; count ++){
-        myfile << all_items[count] << " " ;
+        myfile << all_items[count] << " " << all_items[count].identity << " " << all_items[count].getable << " " << all_items[count].inPossesssion << " " << all_items[count].location << " ";
     }
     myfile.close();
   }
