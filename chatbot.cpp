@@ -103,7 +103,7 @@ int invo(myitem all_items[],int all_items_length){
   if (itemcount==0) cout<<"There's nothing in your inventory"<<endl;
   cout<<endl;
 }
-
+/*
 int savegame(int all_items_length, myitem all_items[]){
   //could modify to let users choose the name of their save file?
   ofstream myfile ("savefile.txt");
@@ -118,8 +118,8 @@ int savegame(int all_items_length, myitem all_items[]){
   return 0;
   cout<<"game saved"<<endl;
 }
-
-
+working on this in main.cpp ~alexis
+*/
 
 
 
