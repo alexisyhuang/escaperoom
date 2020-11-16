@@ -15,18 +15,17 @@ struct myitem{
     string location;
 };
 
-void savegame(int all_items_length, myitem all_items[7]){
+void savegame(int all_items_length, myitem all_items[10]){
+  cout << "saving game..." << endl;
   ofstream myfile; 
   myfile.open("savefile.txt");
-  if (myfile.is_open())
-  {
+  if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i] << " " << all_items[i].identity << " " << all_items[i].getable << " " << all_items[i].inPossession << " " << all_items[i].location << " ";
+        myfile << all_items[i].identity << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
     }
     myfile.close();
   } else {
   	cout << "Unable to open file." << endl;
-	//return 0;
   }  
   cout<<"game saved."<<endl;
 }
@@ -91,11 +90,11 @@ int main(){
           specialItem.inPossession = 0;
           specialItem.location = "fishtank";
         } else {
-          specialItem.identity = "turkey leg";
+          specialItem.identity = "turkeyleg";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
           specialItem.location = "table";
-          usedItem.identity = "turkey bone";
+          usedItem.identity = "turkeybone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
           usedItem.location = "table";
@@ -126,7 +125,7 @@ int main(){
         for(int i = 0; i < all_items_length; i ++){
             name = words[vectorcount];
             struct myitem name;
-            vectorcount++;
+            //vectorcount++;
             name.identity = words[vectorcount];
             vectorcount++;
             if (words[vectorcount] == "0") {
@@ -162,8 +161,9 @@ int main(){
     cout << "You see a table across the room, and there's also a " << all_items[1].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
     cout<< "On the wall, there's a " << all_items[4].identity << ". Maybe that could be useful?" << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
-	
-    savegame(all_items_length, all_items);
+
+    
+    //savegame(all_items_length, all_items);
     //call chatbot.cpp
     
     
