@@ -3,14 +3,9 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "structure.h"
 using namespace std;
-struct myitem{// can add more if you wish
-    string identity;
-    string subtype;
-    int getable; // 1
-    int inPossession;
-    string location;
-};
+
 
 //functions
 int chatbot(myitem[],int);
@@ -24,10 +19,12 @@ int savegame();//to to be implemented by Alexis
 //fake main
 int main(){
 
-  int all_items_length = 2;
+  int all_items_length = 4;
   myitem all_items[10]={
-    {"key","silver key", 1, 0, "cat"},
-    {"food","cake",1,0,"table"}
+    {"table","table",1,0,0,0,"room"},
+    {"fish","fish",1,1,0,0,"table"},
+    {"cat","cat",1,0,0,0,"room"},
+    {"key","silver key", 1,0,0,0, "cat"},
   };
   printallitem(all_items_length,all_items);
   while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
@@ -77,9 +74,14 @@ int getobj(string obj, myitem all_items[], int all_items_length){
   for (i=0; i<all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }
-  if (all_items[i].getable == 1 || all_items[i].inPossession == 0)
-  all_items[i].inPossession =1;
-  cout<<endl<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl<<endl;
+  if (all_items[i].getable == 1 && all_items[i].inPossession == 0){
+    all_items[i].inPossession =1;
+    cout<<endl<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl<<endl;
+  }else if (all_items[i].getable == 0){
+    cout<<"You can't get it."<<endl;
+  }else if (all_items[i].inPossession == 1){
+    cout<<"It's already in your inventory."<<endl;
+  }
 }
 int help(){
   cout<<"You're trapped in a room. Find your way out!"<<endl

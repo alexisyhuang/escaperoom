@@ -74,9 +74,14 @@ int getobj(string obj, myitem all_items[], int all_items_length){
   for (i=0; i<all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }
-  if (all_items[i].getable == 1 || all_items[i].inPossession == 0)
-  all_items[i].inPossession =1;
-  cout<<endl<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl<<endl;
+  if (all_items[i].getable == 1 && all_items[i].inPossession == 0){
+    all_items[i].inPossession =1;
+    cout<<endl<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl<<endl;
+  }else if (all_items[i].getable == 0){
+    cout<<"You can't get it."<<endl;
+  }else if (all_items[i].inPossession == 1){
+    cout<<"It's already in your inventory."<<endl;
+  }
 }
 int help(){
   cout<<"You're trapped in a room. Find your way out!"<<endl
