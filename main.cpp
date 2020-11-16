@@ -93,9 +93,19 @@ int main(){
         ofstream myfile ("savefile.txt");
         if (myfile.is_open()){
             for(int i = 0; i < all_items_length; count ++){
-                myitem temp;
-                myfile >> temp;
-                all_items[i] = temp;
+                string name;
+                string holderString;
+                int holderInt;
+                myfile >> name;
+                myitem name;
+                myfile >> holderString;
+                name.identity = holderString;
+                myfile >> holderInt;
+                name.getable = holderInt;
+                myfile >> holderInt;
+                name.inPossession = holderInt;
+                myfile >> holderString;
+                name.location = holderString;
             }       
             myfile.close();
         }
@@ -116,6 +126,7 @@ int main(){
     }
     cout << "Luckily, there's a number pad on the door which you could use to make your escape. You need to get home soon to submit that programming assignment, after all." << endl;
     cout << "You see a table across the room, and there's also a " << all_items[1].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
+    cout<< "On the wall, there's a " << all_items[4].identity << ". Maybe that could be useful?" << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
     
     //call chatbot.cpp
