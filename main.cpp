@@ -21,7 +21,7 @@ void savegame(int all_items_length, myitem all_items[10]){
   myfile.open("savefile.txt");
   if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i].identity << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
+        myfile << all_items[i].identity << ' ' << all_items[i].catagory << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
     }
     myfile.close();
   } else {
@@ -49,46 +49,46 @@ int main(){
       int num2 = rand() % 2;
       int num3 = rand() % 2;
       struct myitem animal;
-      animal.subtype = "animal";
+      animal.catagory = "animal";
       animal.identity = possibleItems[1][num1];
       animal.getable = 0;
       animal.inPossession = 0;
-      animal.location = "room";
+      animal.location = "floor";
       
       struct myitem door;
-      door.subtype = "door";
+      door.catagory = "door";
       door.identity = possibleItems[0][num2];
       door.getable = 1;
       door.inPossession = 0;
       door.location = "room";
       
       struct myitem useless;
-      usless.subtype = "decoration";
+      usless.catagory = "decoration";
       useless.identity = possibleItems[2][num3];
       useless.getable = 1;
       useless.inPossession = 0;
-      useless.location = "room";
+      useless.location = "wall";
       
       struct myitem key;
-      key.subtype = "key";
+      key.catagory = "key";
       key.identity = "key";
       key.getable = 1;
       key.inPossession = 0;
       key.location = animal.identity;
         
       struct myitem chest;
-      chest.subtype = "chest";
+      chest.catagory = "chest";
       chest.identity = "chest";
       chest.getable = 0;
       chest.inPossession = 0;
-      chest.location = "room";
+      chest.location = "floor";
 	    
       struct myitem table;
-      table.subtype = "table";
+      table.catagory = "table";
       table.identity = "table";
       table.getable = 0;
       table.inPossession = 0;
-      table.location = "room";
+      table.location = "floor";
         
       struct myitem specialItem;
       struct myitem usedItem;
@@ -141,6 +141,8 @@ int main(){
             //vectorcount++;
             name.identity = words[vectorcount];
             vectorcount++;
+	    name.catagory = words[vectorcount];
+	    vectorcount++;
             if (words[vectorcount] == "0") {
                 name.getable = 0;
             } else {
