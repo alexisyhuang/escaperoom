@@ -21,7 +21,7 @@ void savegame(int all_items_length, myitem all_items[10]){
   myfile.open("savefile.txt");
   if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i].identity << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
+        myfile << all_items[i].identity << ' ' << all_items[i].catagory << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
     }
     myfile.close();
   } else {
