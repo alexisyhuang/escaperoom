@@ -1,4 +1,5 @@
 //#include "randgame.h"
+#include <cstdlib>
 #include <iostream>
 #include <time.h>
 #include <fstream>
@@ -38,7 +39,7 @@ int main(){
 
     cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
     string saveYesNo;
-    cin >> saveYesNo;
+    getline(cin, saveYesNo);
     bool savefile = false;
     if (saveYesNo == "Y") {
         savefile = true;
