@@ -44,7 +44,9 @@ int main(){
     }
     if (savefile == false) {
       //initialise room
-      srand(time(NULL));
+      //srand(time(NULL));
+      int randSeed = 5;
+      srand(randSeed);
       int num1 = rand() % 2;
       int num2 = rand() % 2;
       int num3 = rand() % 2;
