@@ -8,7 +8,7 @@ struct myitem{// can add more if you wish
     string identity;// constant
     //int exist;//whether it exist/still exist in this game
     int getable; //0or1 depends on object property, and presence of obstacles
-    int knowexistance;//initially setted to 0, becomes 1 when user sees it
+    int knowexistence;//initially setted to 0, becomes 1 when user sees it
     //if getable && knowexistance --> can be picked up
     int inPossession;//in inventory = 1, not in= 0
     string location;
