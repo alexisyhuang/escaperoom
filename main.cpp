@@ -3,21 +3,22 @@
 #include <time.h>
 #include <fstream>
 #include <vector>
-//#include "chatbot.h"
+#include "structure.h"
+#include "chatbot.h"
 using namespace std;
-
+/**
 struct myitem{
     string identity;
     //string subtype;
-    //no need for subtype anymore because this is indicated by the position in the array? 
+    //no need for subtype anymore because this is indicated by the position in the array?
     int getable; // 1 = yes, 0 = no
   	int inPossession; // 1 = yes, 0 = no
     string location;
-};
+};**/
 
 void savegame(int all_items_length, myitem all_items[10]){
   cout << "saving game..." << endl;
-  ofstream myfile; 
+  ofstream myfile;
   myfile.open("savefile.txt");
   if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
@@ -26,7 +27,7 @@ void savegame(int all_items_length, myitem all_items[10]){
     myfile.close();
   } else {
   	cout << "Unable to open file." << endl;
-  }  
+  }
   cout<<"game saved."<<endl;
 }
 
@@ -34,7 +35,7 @@ int main(){
     myitem all_items[10];
     int all_items_length = 7;
     string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
-    
+
     cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
     string saveYesNo;
     cin >> saveYesNo;
@@ -57,7 +58,7 @@ int main(){
       animal.inPossession = 0;
       animal.location = "floor";
       animal.knowExistence = 0;
-      
+
       struct myitem door;
       door.catagory = "door";
       door.identity = possibleItems[0][num2];
@@ -65,15 +66,15 @@ int main(){
       door.inPossession = 0;
       door.location = "room";
       door.knowExistence = 0;
-      
+
       struct myitem useless;
-      usless.catagory = "decoration";
+      useless.catagory = "decoration";
       useless.identity = possibleItems[2][num3];
       useless.getable = 1;
       useless.inPossession = 0;
       useless.location = "wall";
       useless.knowExistence = 0;
-      
+
       struct myitem key;
       key.catagory = "key";
       key.identity = "key";
@@ -81,7 +82,7 @@ int main(){
       key.inPossession = 0;
       key.location = animal.identity;
       key.knowExistence = 0;
-        
+
       struct myitem chest;
       chest.catagory = "chest";
       chest.identity = "chest";
@@ -89,7 +90,7 @@ int main(){
       chest.inPossession = 0;
       chest.location = "floor";
       chest.knowExistence = 0;
-	    
+
       struct myitem table;
       table.catagory = "table";
       table.identity = "table";
@@ -97,7 +98,7 @@ int main(){
       table.inPossession = 0;
       table.location = "floor";
       table.knowExistence = 0;
-        
+
       struct myitem specialItem;
       struct myitem usedItem;
       if (animal.identity == "cat") {
@@ -169,7 +170,7 @@ int main(){
             vectorcount++;
             name.location = words[vectorcount];
             vectorcount++;
-	    name.knowExistence = words[vectorcount];
+	    name.knowExistence = stoi(words[vectorcount]);
             vectorcount++;
 	    all_items[i] = name;
         }
@@ -191,10 +192,10 @@ int main(){
     cout<< "On the wall, there's a " << all_items[4].identity << ". Maybe that could be useful?" << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
 
-    
+
     //savegame(all_items_length, all_items);
     //call chatbot.cpp
-    
-    
-    chatbot(all_items, all_items_length);
+
+
+    while(chatbot(all_items, all_items_length));
 }
