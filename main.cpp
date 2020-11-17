@@ -21,7 +21,7 @@ void savegame(int all_items_length, myitem all_items[10]){
   myfile.open("savefile.txt");
   if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i].identity << ' ' << all_items[i].catagory << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ';
+        myfile << all_items[i].identity << ' ' << all_items[i].catagory << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ' << all_items[i].knowExistence << ' ';
     }
     myfile.close();
   } else {
@@ -54,6 +54,7 @@ int main(){
       animal.getable = 0;
       animal.inPossession = 0;
       animal.location = "floor";
+      animal.knowExistence = 0;
       
       struct myitem door;
       door.catagory = "door";
@@ -61,6 +62,7 @@ int main(){
       door.getable = 1;
       door.inPossession = 0;
       door.location = "room";
+      door.knowExistence = 0;
       
       struct myitem useless;
       usless.catagory = "decoration";
@@ -68,6 +70,7 @@ int main(){
       useless.getable = 1;
       useless.inPossession = 0;
       useless.location = "wall";
+      useless.knowExistence = 0;
       
       struct myitem key;
       key.catagory = "key";
@@ -75,6 +78,7 @@ int main(){
       key.getable = 1;
       key.inPossession = 0;
       key.location = animal.identity;
+      key.knowExistence = 0;
         
       struct myitem chest;
       chest.catagory = "chest";
@@ -82,6 +86,7 @@ int main(){
       chest.getable = 0;
       chest.inPossession = 0;
       chest.location = "floor";
+      chest.knowExistence = 0;
 	    
       struct myitem table;
       table.catagory = "table";
@@ -89,6 +94,7 @@ int main(){
       table.getable = 0;
       table.inPossession = 0;
       table.location = "floor";
+      table.knowExistence = 0;
         
       struct myitem specialItem;
       struct myitem usedItem;
@@ -97,19 +103,23 @@ int main(){
           specialItem.getable = 1;
           specialItem.inPossession = 0;
           specialItem.location = "table";
+	  specialItem.knowExistence = 0;
           usedItem.identity = "fish";
-          specialItem.getable = 1;
-          specialItem.inPossession = 0;
-          specialItem.location = "fishtank";
+          usedItem.getable = 1;
+          usedItem.inPossession = 0;
+          usedItem.location = "fishtank";
+	  usedItem.knowExistence = 0;
         } else {
           specialItem.identity = "turkeyleg";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
           specialItem.location = "table";
+	  specialItem.knowExistence = 0;
           usedItem.identity = "turkeybone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
           usedItem.location = "turkeyleg";
+	  usedItem.knowExistence = 0;
         }
         all_items[0] = door;
         all_items[1] = animal;
@@ -157,6 +167,8 @@ int main(){
             vectorcount++;
             name.location = words[vectorcount];
             vectorcount++;
+	    name.knowExistence = words[vectorcount];
+            vectorcount++;
 	    all_items[i] = name;
         }
     }
@@ -182,36 +194,5 @@ int main(){
     //call chatbot.cpp
     
     
-    //chatbot(all_items, all_items_length);
-
-    
-    //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
-    
-    /*
-    int all_items_length = 2;
-    myitem all_items[10]={
-      {"key","silver key", 1, 0, "cat"},
-      {"food","cake",1,0,"table"}
-    };
-    for(int i=0; i < all_items_length; i++){
-      cout<< "identity: "<< all_items[i].identity<<endl
-      <<"subtype: "<<all_items[i].subtype<<endl
-      <<"getable: "<< all_items[i].getable<<endl
-      <<"inPossession: "<< all_items[i].inPossession<< endl
-      <<"location: "<< all_items[i].location<<endl<<endl;
-    }
-  }*/
-
-  /**old obsolete scripts see if it's useful or not. if not, just delete it
-  string room[6][2][5] = {};
-  // 6 possible locations: door, table, floor, shelf, wall, ceiling
-  // each location has 2 "attribute": what other items it contains, other attribute
-  // attribute: important? (only important ones are mentioned in the )
-  // 5 is for the items a location contains
-  string items[5][7]={};
-  // possible items: door, chest, animal, food, key,
-  // attribute: identity, adj(wooden/steel; cat/dog), exist?, visible?, getable?, usable?, location,
-  randgame(room, items,1);
-  **/
-
+    chatbot(all_items, all_items_length);
 }
