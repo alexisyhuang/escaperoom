@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "structure.h"
 #include "chatbot.h"
+#include "main.cpp"
 using namespace std;
 
 
@@ -27,7 +28,7 @@ int savegame();//to to be implemented by Alexis
     {"food","cake",1,0,"table"}
   };
   printallitem(all_items_length,all_items);
-  while (chatbot(all_items,all_items_lengthsave));//ADD THIS LINE TO THE REAL MAIN FUNCTION
+  while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
 }
 **/
 
@@ -134,9 +135,10 @@ working on this in main.cpp ~alexis
 
 int printallitem(int all_items_length, myitem all_items[]){
   for(int i=0; i < all_items_length; i++){
-    cout<< "identity: "<< all_items[i].identity<<endl
-    <<"subtype: "<<all_items[i].subtype<<endl
+    cout<< "catagory: "<< all_items[i].catagory<<endl
+    <<"identity: "<<all_items[i].identity<<endl
     <<"getable: "<< all_items[i].getable<<endl
+    <<"knowExistence: "<< all_items[i].knowExistence<<endl
     <<"inPossession: "<< all_items[i].inPossession<< endl
     <<"location: "<< all_items[i].location<<endl<<endl;
   }
