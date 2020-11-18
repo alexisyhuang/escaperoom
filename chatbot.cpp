@@ -34,11 +34,12 @@ int savegame();//to to be implemented by Alexis
 
 //chatbot function
 int chatbot(myitem all_items[],int all_items_length){
+  cout<<endl;
   string varline, firstword;
   cout<<">>> ";
   getline(cin, varline);
   stringstream line(varline);
-
+  cout<<endl;
   line>>firstword;
   if(firstword=="get") {
     string obj;
@@ -48,21 +49,29 @@ int chatbot(myitem all_items[],int all_items_length){
   if(firstword=="help") help();
   if(firstword=="hint") hint();
   if(firstword=="inventory") invo(all_items,all_items_length);
-  if(firstword=="print") printallitem(all_items_length,all_items);
+  if((firstword=="kick")||(firstword =="hit")||(firstword=="fight")) {
+    string obj;
+    line>>obj;
+    kick(obj, all_items,all_items_length);
+  }
+  if(firstword=="print") printallitem(all_items,all_items_length);
   if((firstword=="quit")||(firstword =="exit")||(firstword=="close")) {
     cout<<"Do you want to save the game before quitting? [Y/N]";
     string response;
     cin>> response;
-    if (response=="Y"||response=="yes") //savegame();
+    if (response=="Y"||response=="yes") savegame(all_items_length,all_items);
     return 0;// quits
   }
-  if(firstword=="save") //savegame();
+  if(firstword=="save") savegame(all_items_length,all_items);
 
 
-
+  if(all_items[1].getable == 1){// change to 0 after implementation
+    return 0;
+  }
 
   /**if(firstword=="help") help();
   if(firstword=="help") help();**/
+  cout<<endl;
   return 1;
   }
 
@@ -71,17 +80,27 @@ int chatbot(myitem all_items[],int all_items_length){
 
 
 int getobj(string obj, myitem all_items[], int all_items_length){
-  int i;
-  for (i=0; i<all_items_length; i++){// find id of corresponding item
+
+  int i,j;
+  for (i=0; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
+  }if (i>all_items_length){
+    for(j=0; j<all_items_length; j++){
+      if (all_items[j].catagory==obj) {
+        i=j;
+        break;
+      }
+    }
   }
-  if (all_items[i].getable == 1 && all_items[i].inPossession == 0){
+  if (all_items[i].getable == 1 && all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
     all_items[i].inPossession =1;
-    cout<<endl<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl<<endl;
-  }else if (all_items[i].getable == 0){
-    cout<<"You can't get it."<<endl;
+    cout<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl;
+  }else if (all_items[i].knowExistence == 0){
+    cout<< "What "<< obj <<"? *doge*";
   }else if (all_items[i].inPossession == 1){
     cout<<"It's already in your inventory."<<endl;
+  }else if (all_items[i].getable == 0){
+    cout<<"You can't get it."<<endl;
   }
 }
 int help(){
@@ -97,7 +116,6 @@ int hint(){
 }
 int invo(myitem all_items[],int all_items_length){
   int i, itemcount = 0;
-  cout<<endl;
   for (i=0; i<all_items_length; i++){// find id of corresponding item
     if (all_items[i].inPossession==1){
       if (itemcount==0) cout<<"Inventory"<<endl<<"---------"<<endl;
@@ -107,33 +125,37 @@ int invo(myitem all_items[],int all_items_length){
 
   }
   if (itemcount==0) cout<<"There's nothing in your inventory"<<endl;
-  cout<<endl;
 }
-/*
-int savegame(int all_items_length, myitem all_items[]){
-  //could modify to let users choose the name of their save file?
-  ofstream myfile ("savefile.txt");
-  if (myfile.is_open())
-  {
-    for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i] << " " << all_items[i].identity << " " << all_items[i].getable << " " << all_items[i].inPossesssion << " " << all_items[i].location << " ";
-    }
-    myfile.close();
+
+int kick(string obj,myitem all_items[],int all_items_length){
+  int i=0;
+  for (i=0; i<=all_items_length; i++){// find id of corresponding item
+    if (all_items[i].identity==obj) break;
+  }if (i>all_items_length){// no item found
+    cout<< "Sorry, I don't know what is "<<obj<<endl
+      << "Type \"help\" to get a list of possbile items";
   }
-  else cout << "Unable to open file";
-  return 0;
-  cout<<"game saved"<<endl;
+  if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
+    if ((obj == "cat")||(obj == "dog")){
+      cout<<"The "<<obj<< " is angry. It scratches and bites you non stop."<<endl
+        <<"You die."<<endl
+        <<"Learn the lesson. Do not abuse animal.";
+        all_items[1].getable = 1;//switch to 0
+    }else {
+      cout<<"Control your temper. Doing so doesn't help.(i.e. programmer did not write any script for kicking this object)";
+    }
+    cout<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl;
+  }else if (all_items[i].knowExistence == 0){
+    cout<< "What "<< obj <<"? *doge*";
+  }else if (all_items[i].inPossession == 1){
+    cout<<"This item is "<<endl;
+  }else if (all_items[i].getable == 0){
+    cout<<"You can't get it."<<endl;
+  }
 }
-working on this in main.cpp ~alexis
-*/
 
 
-
-
-
-
-
-int printallitem(int all_items_length, myitem all_items[]){
+int printallitem(myitem all_items[],int all_items_length){
   for(int i=0; i < all_items_length; i++){
     cout<< "catagory: "<< all_items[i].catagory<<endl
     <<"identity: "<<all_items[i].identity<<endl
@@ -150,15 +172,6 @@ int printallitem(int all_items_length, myitem all_items[]){
 
 
 
-
-
-
-/**
-string verb[4]={"eat","get","look","hit"};
-int verblength = 4;
-void chatbot(string, )
-
-**/
 
 
 
