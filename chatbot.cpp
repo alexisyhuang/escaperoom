@@ -84,14 +84,13 @@ int getobj(string obj, myitem all_items[], int all_items_length){
   int i,j;
   for (i=0; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
-  }if (i>all_items_length){
-    for(j=0; j<all_items_length; j++){
-      if (all_items[j].catagory==obj) {
-        i=j;
-        break;
-      }
-    }
   }
+  if (i>all_items_length){
+    cout<< "Sorry, I don't know what is "<<obj<<endl
+      << "Type \"help\" to get a list of possbile items";
+
+  }
+
   if (all_items[i].getable == 1 && all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
     all_items[i].inPossession =1;
     cout<<"You got the "<< all_items[i].identity<<". It's now in your inventory."<<endl;
@@ -157,8 +156,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
 
 int printallitem(myitem all_items[],int all_items_length){
   for(int i=0; i < all_items_length; i++){
-    cout<< "catagory: "<< all_items[i].catagory<<endl
-    <<"identity: "<<all_items[i].identity<<endl
+    cout<<"identity: "<<all_items[i].identity<<endl
     <<"getable: "<< all_items[i].getable<<endl
     <<"knowExistence: "<< all_items[i].knowExistence<<endl
     <<"inPossession: "<< all_items[i].inPossession<< endl
