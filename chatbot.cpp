@@ -130,8 +130,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
   }else if (all_items[i].knowExistence == 0){
     cout<< "What "<< obj <<"? *doge*";
   }else if (all_items[i].inPossession == 1){
-    cout<<"This item is in your inventory. You cannot kick it.
-  "<<endl;
+    cout<<"This item is in your inventory. You cannot kick it."<<endl;
   }
 }
 
