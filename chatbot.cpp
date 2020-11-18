@@ -9,28 +9,7 @@
 using namespace std;
 
 
-//functions
-/**
-int chatbot(myitem[],int);
-int getobj(string, myitem[],int);
-int help();
-int hint();
-int invo(myitem[],int);
-int printallitem(int, myitem[]);
-int savegame();//to to be implemented by Alexis
-**/
-//fake main
-/**int main(){
 
-  int all_items_length = 2;
-  myitem all_items[10]={
-    {"key","silver key", 1, 0, "cat"},
-    {"food","cake",1,0,"table"}
-  };
-  printallitem(all_items_length,all_items);
-  while (chatbot(all_items,all_items_length));//ADD THIS LINE TO THE REAL MAIN FUNCTION
-}
-**/
 
 //chatbot function
 int chatbot(myitem all_items[],int all_items_length){
@@ -69,8 +48,6 @@ int chatbot(myitem all_items[],int all_items_length){
     return 0;
   }
 
-  /**if(firstword=="help") help();
-  if(firstword=="help") help();**/
   cout<<endl;
   return 1;
   }
@@ -80,8 +57,11 @@ int chatbot(myitem all_items[],int all_items_length){
 
 
 int getobj(string obj, myitem all_items[], int all_items_length){
-
-  int i,j;
+  int i;
+  if (obj==""){
+    cout<<"You've got to tell me what you wanna get as well."<<endl;
+    return 0;
+  }
   for (i=0; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }
@@ -107,8 +87,7 @@ int help(){
     <<"Phrase your sentances as follow:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
     <<"<verb> <object> (eg get key, look at table)"<<endl
-    <<"use <object(tool)> to <object(target)> (eg use key with door)"<<endl
-    <<"<other verb> <object(target)> with <object(tool)> (eg open door with key)"<<endl;
+    <<"use <object(tool)> to <object(target)> (eg use key with door)"<<endl;
 }
 int hint(){
   cout<<"huh what hint do you want"<<endl;
@@ -127,6 +106,10 @@ int invo(myitem all_items[],int all_items_length){
 }
 
 int kick(string obj,myitem all_items[],int all_items_length){
+  if (obj==""){
+    cout<<"Kick WHAT???"<<endl;
+    return 0;
+  }
   int i=0;
   for (i=0; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
@@ -147,12 +130,15 @@ int kick(string obj,myitem all_items[],int all_items_length){
   }else if (all_items[i].knowExistence == 0){
     cout<< "What "<< obj <<"? *doge*";
   }else if (all_items[i].inPossession == 1){
-    cout<<"This item is "<<endl;
-  }else if (all_items[i].getable == 0){
-    cout<<"You can't get it."<<endl;
+    cout<<"This item is in your inventory. You cannot kick it.
+  "<<endl;
   }
 }
 
+int look(string obj,myitem all_items[],int all_items_length){
+
+
+}
 
 int printallitem(myitem all_items[],int all_items_length){
   for(int i=0; i < all_items_length; i++){
@@ -163,51 +149,3 @@ int printallitem(myitem all_items[],int all_items_length){
     <<"location: "<< all_items[i].location<<endl<<endl;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-/**
-string verb[4]={"eat","get","look","hit"};
-int verblength = 4;
-
-int findverb(int length, string uinputA[]);
-int main(){
-  string uinput;
-  getline(cin,uinput);
-  int uinputlength = count(uinput.begin(), uinput.end(), ' ')+ 1;
-  stringstream uinputS(uinput);
-  string uinputA[5];//maximum numbers of worlds in the getline
-  if (uinputlength > 5){
-    cout<< "Wait a minute. Your sentance is too complicate for me to understand. Can you simplify it a bit?";
-  }else{
-    for (int i=0; i<uinputlength; i++){
-      uinputS >> uinputA[i];
-    }
-    for (int i=0; i<uinputlength; i++){
-      cout<< uinputA[i]<<endl;
-  }// by this point, user input is stored in an array of words.
-  string actionA[4]={};/**action array: 0= subject(omittable), 1= verb, 2= object
-  findverb(uinputlength,uinputA);
-  cout << actionA[1];
-  }
-}
-
-int findverb(int length, string uinputA[]){
-  for (int i=0; i<length; i++){
-    for (int j=0; j<verblength; j++){
-      if (uinputA[i]==verb[j]){
-        cout<< uinputA[i];
-        break;
-      }
-    }
-  }
-}
-**/
