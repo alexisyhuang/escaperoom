@@ -33,6 +33,9 @@ void savegame(int all_items_length, myitem all_items[10]){
 }
 
 int main(){
+  init();
+}
+int init(){
     myitem all_items[10];
     int all_items_length = 7;
     string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
@@ -199,4 +202,5 @@ int main(){
 
 
     while(chatbot(all_items, all_items_length));
+
 }
