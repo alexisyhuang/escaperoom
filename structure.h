@@ -4,7 +4,7 @@ using namespace std;
 #define structure_h
 
 struct myitem{// can add more if you wish
-    string catagory;//constant
+    //string catagory;//constant
     string identity;// constant
     //int exist;//whether it exist/still exist in this game
     int getable; //0or1 depends on object property, and presence of obstacles //1=recall main
