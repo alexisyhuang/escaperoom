@@ -12,6 +12,7 @@ int help();
 int hint();
 int invo(myitem[],int);
 int kick(string, myitem[] ,int);
+int look(string, myitem[] ,int);
 int printallitem(myitem[],int);
 int savegame();
 #endif
