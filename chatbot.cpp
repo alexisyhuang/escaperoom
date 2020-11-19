@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "structure.h"
 #include "chatbot.h"
-#include "main.cpp"
+#include "updatedmain.cpp"
 using namespace std;
 
 
@@ -17,6 +17,7 @@ int chatbot(myitem all_items[],int all_items_length){
   string varline, firstword;
   cout<<">>> ";
   getline(cin, varline);
+
   stringstream line(varline);
   cout<<endl;
   line>>firstword;
@@ -33,6 +34,11 @@ int chatbot(myitem all_items[],int all_items_length){
     line>>obj;
     kick(obj, all_items,all_items_length);
   }
+  if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")) {
+    string obj;
+    line>>obj;
+    look(obj, all_items,all_items_length);
+  }
   if(firstword=="print") printallitem(all_items,all_items_length);
   if((firstword=="quit")||(firstword =="exit")||(firstword=="close")) {
     cout<<"Do you want to save the game before quitting? [Y/N]";
@@ -44,7 +50,7 @@ int chatbot(myitem all_items[],int all_items_length){
   if(firstword=="save") savegame(all_items_length,all_items);
 
 
-  if(all_items[1].getable == 1){// change to 0 after implementation
+  if(all_items[0].getable == 1){// change to 0 after implementation
     return 0;
   }
 
@@ -62,7 +68,7 @@ int getobj(string obj, myitem all_items[], int all_items_length){
     cout<<"You've got to tell me what you wanna get as well."<<endl;
     return 0;
   }
-  for (i=0; i<=all_items_length; i++){// find id of corresponding item
+  for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }
   if (i>all_items_length){
@@ -94,7 +100,7 @@ int hint(){
 }
 int invo(myitem all_items[],int all_items_length){
   int i, itemcount = 0;
-  for (i=0; i<all_items_length; i++){// find id of corresponding item
+  for (i=1; i<all_items_length; i++){// find id of corresponding item
     if (all_items[i].inPossession==1){
       if (itemcount==0) cout<<"Inventory"<<endl<<"---------"<<endl;
       cout<<"- "<<all_items[i].identity<<endl;
@@ -110,19 +116,20 @@ int kick(string obj,myitem all_items[],int all_items_length){
     cout<<"Kick WHAT???"<<endl;
     return 0;
   }
-  int i=0;
-  for (i=0; i<=all_items_length; i++){// find id of corresponding item
+  int i;
+  for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }if (i>all_items_length){// no item found
     cout<< "Sorry, I don't know what is "<<obj<<endl
       << "Type \"help\" to get a list of possbile items";
+      return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
     if ((obj == "cat")||(obj == "dog")){
       cout<<"The "<<obj<< " is angry. It scratches and bites you non stop."<<endl
         <<"You die."<<endl
         <<"Learn the lesson. Do not abuse animal.";
-        all_items[1].getable = 1;//switch to 0
+        all_items[0].getable = 1;//switch to 0
     }else {
       cout<<"Control your temper. Doing so doesn't help.(i.e. programmer did not write any script for kicking this object)";
     }
@@ -135,6 +142,17 @@ int kick(string obj,myitem all_items[],int all_items_length){
 }
 
 int look(string obj,myitem all_items[],int all_items_length){
+  if (obj==""){
+      cout<< "You look around the room. It's a tiny crowded room. On the floor, there is";
+      int i,last=0;
+      for (i=1; i< all_items_length; i++){
+        if (all_items[i].location == "floor"){
+          cout<<" a "<< all_items[i].identity<< ",";
+          last=i;
+        }
+      }
+      cout<< string(all_items[last].identity.length()+5,'\b')<<"and a "<<all_items[last].identity<<".";
+  }
 
 
 }
