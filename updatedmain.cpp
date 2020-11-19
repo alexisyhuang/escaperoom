@@ -1,24 +1,27 @@
-//#include "randgame.h"
+#include "structure.h"
 #include <iostream>
 #include <time.h>
 #include <fstream>
 #include <vector>
-//#include "chatbot.h"
-using namespace std;
+#include <string>
+#include <sstream>
+#include "chatbot.h"
 
+using namespace std;
+/**
 struct myitem{
     string identity;
     //string subtype;
-    //no need for subtype anymore because this is indicated by the position in the array? 
+    //no need for subtype anymore because this is indicated by the position in the array?
     int getable; // 1 = yes, 0 = no
   	int inPossession; // 1 = yes, 0 = no
     string location;
     int knowExistence;
 };
-
+**/
 void savegame(int all_items_length, myitem all_items[10]){
   cout << "saving game..." << endl;
-  ofstream myfile; 
+  ofstream myfile;
   myfile.open("savefile.txt");
   if (myfile.is_open()){
     for(int i = 0; i < all_items_length; i ++){
@@ -27,7 +30,7 @@ void savegame(int all_items_length, myitem all_items[10]){
     myfile.close();
   } else {
   	cout << "Unable to open file." << endl;
-  }  
+  }
   cout<<"game saved."<<endl;
 }
 
@@ -35,88 +38,107 @@ int main(){
     myitem all_items[10];
     int all_items_length = 8;
     //string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
-    string possibleItems[2][2] = {{"cat", "dog"}, {"painting", "poster"}};
-    
-    cout << "Do you want to load a previous save file? Type Y for yes or N for no." << endl;
+    string possibleItems[3][2] = {{"cat", "dog"}, {"painting", "poster"},{"table", "shelve"}};
+
+    cout << "Do you want to load a previous save file? [Y/N]" << endl
+      << ">>> ";
     string saveYesNo;
-    cin >> saveYesNo;
+    getline(cin, saveYesNo);
     bool savefile = false;
-    if (saveYesNo == "Y") {
+    if ((saveYesNo == "Y")||(saveYesNo == "Y")) {
         savefile = true;
     }
     if (savefile == false) {
       //initialise room
-      srand(time(NULL));
+
+      cout<<"Please input integer seed(type -1 to use random seed): ";
+      int seed;
+      string seed_string;
+      getline(cin,seed_string);
+      stringstream seed_stream(seed_string);
+      seed_stream>>seed;//not directly using cin>> seed because i don't want an extra EOL at the beginning of the file
+      if (seed==-1){
+        seed = time(NULL);
+      }
+      srand(seed);
       int num1 = rand() % 2;
       int num2 = rand() % 2;
-      //int num3 = rand() % 2;
+      int num3 = rand() % 2;
       struct myitem animal;
       animal.identity = possibleItems[0][num1];
       animal.getable = 1;
       animal.inPossession = 0;
       animal.location = "floor";
       animal.knowExistence = 0;
-      
+
       struct myitem life;
       life.identity = "life";
       life.getable = 0;
       life.inPossession = 0;
       life.location = "none";
       life.knowExistence = 0;
-      
+
       struct myitem door;
       door.identity = "door";
-      door.getable = 1;
+      door.getable = 0;
       door.inPossession = 0;
       door.location = "wall";
       door.knowExistence = 0;
-      
+
       struct myitem useless;
       useless.identity = possibleItems[1][num2];
       useless.getable = 0;
       useless.inPossession = 0;
       useless.location = "wall";
       useless.knowExistence = 0;
-      
+
       struct myitem key;
       key.identity = "key";
       key.getable = 1;
       key.inPossession = 0;
       key.location = "chest";
       key.knowExistence = 0;
-        
+
       struct myitem chest;
       chest.identity = "chest";
       chest.getable = 1;
       chest.inPossession = 0;
       chest.location = "floor";
       chest.knowExistence = 0;
-        
+
+      struct myitem furniture;
+      furniture.identity = possibleItems[1][num3];
+      furniture.getable = 0;
+      furniture.inPossession = 0;
+      furniture.location = "floor";
+      furniture.knowExistence = 0;
+
       struct myitem specialItem;
       struct myitem usedItem;
       if (animal.identity == "cat") {
-          specialItem.identity = "fishtank";
+          specialItem.identity = "tank";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
-          specialItem.location = "table";
+          specialItem.location = furniture.identity;
           specialItem.knowExistence = 0;
           usedItem.identity = "fish";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
           usedItem.location = "fishtank";
           usedItem.knowExistence = 0;
-          
+
         } else {
-          specialItem.identity = "turkeyleg";
-          specialItem.getable = 1;
-          specialItem.inPossession = 0;
-          specialItem.location = "table";
-          specialItem.knowExistence = 0;
-          usedItem.identity = "turkeybone";
+          usedItem.identity = "bone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
-          usedItem.location = "turkeyleg";
+          usedItem.location = furniture.identity;
           usedItem.knowExistence = 0;
+          specialItem.identity = "turkey";
+          specialItem.getable = 1;
+          specialItem.inPossession = 0;
+          specialItem.location = *&usedItem.location;
+          specialItem.knowExistence = 0;
+
         }
         all_items[0] = life;
         all_items[1] = door;
@@ -126,6 +148,7 @@ int main(){
         all_items[5] = useless;
         all_items[6] = chest;
         all_items[7] = key;
+        all_items[8] = furniture;
     } else {
         string holderString;
         vector<std::string> words;
@@ -182,41 +205,12 @@ int main(){
     cout << "You see a table across the room, and there's also a " << all_items[2].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
     cout<< "On the wall, there's a " << all_items[5].identity << ". Maybe that could be useful?" << endl;
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
-    
-    savegame(all_items_length, all_items);
+
+    //savegame(all_items_length, all_items);
     //call chatbot.cpp
-    
-    
-    //chatbot(all_items, all_items_length);
 
-    
-    //I DID THE DATA STRUCTURE PART SO THERES STH TO REFERENCE ON WHEN WORKING WITH THE CHATBOT.  ~dawn
-    
-    /*
-    int all_items_length = 2;
-    myitem all_items[10]={
-      {"key","silver key", 1, 0, "cat"},
-      {"food","cake",1,0,"table"}
-    };
-    for(int i=0; i < all_items_length; i++){
-      cout<< "identity: "<< all_items[i].identity<<endl
-      <<"subtype: "<<all_items[i].subtype<<endl
-      <<"getable: "<< all_items[i].getable<<endl
-      <<"inPossession: "<< all_items[i].inPossession<< endl
-      <<"location: "<< all_items[i].location<<endl<<endl;
-    }
-  }*/
 
-  /**old obsolete scripts see if it's useful or not. if not, just delete it
-  string room[6][2][5] = {};
-  // 6 possible locations: door, table, floor, shelf, wall, ceiling
-  // each location has 2 "attribute": what other items it contains, other attribute
-  // attribute: important? (only important ones are mentioned in the )
-  // 5 is for the items a location contains
-  string items[5][7]={};
-  // possible items: door, chest, animal, food, key,
-  // attribute: identity, adj(wooden/steel; cat/dog), exist?, visible?, getable?, usable?, location,
-  randgame(room, items,1);
-  **/
+    while(chatbot(all_items, all_items_length));
+
 
 }
