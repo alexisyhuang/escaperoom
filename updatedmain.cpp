@@ -36,7 +36,7 @@ void savegame(int all_items_length, myitem all_items[10]){
 
 int main(){
     myitem all_items[10];
-    int all_items_length = 8;
+    int all_items_length = 10;
     //string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
     string possibleItems[3][2] = {{"cat", "dog"}, {"painting", "poster"},{"table", "shelve"}};
 
@@ -64,6 +64,7 @@ int main(){
       int num1 = rand() % 2;
       int num2 = rand() % 2;
       int num3 = rand() % 2;
+
       struct myitem animal;
       animal.identity = possibleItems[0][num1];
       animal.getable = 1;
@@ -73,9 +74,9 @@ int main(){
 
       struct myitem life;
       life.identity = "life";
-      life.getable = 0;
+      life.getable = 0;//die
       life.inPossession = 0;
-      life.location = "none";
+      life.location = to_string(rand() % 10000);//passcode
       life.knowExistence = 0;
 
       struct myitem door;
@@ -96,7 +97,7 @@ int main(){
       key.identity = "key";
       key.getable = 1;
       key.inPossession = 0;
-      key.location = "chest";
+      key.location = animal.identity;
       key.knowExistence = 0;
 
       struct myitem chest;
@@ -107,11 +108,18 @@ int main(){
       chest.knowExistence = 0;
 
       struct myitem furniture;
-      furniture.identity = possibleItems[1][num3];
+      furniture.identity = possibleItems[2][num3];
       furniture.getable = 0;
       furniture.inPossession = 0;
       furniture.location = "floor";
       furniture.knowExistence = 0;
+
+      struct myitem paper;
+      paper.identity = "paper";
+      paper.getable = 1;
+      paper.inPossession = 0;
+      paper.location = "chest";
+      paper.knowExistence = 0;
 
       struct myitem specialItem;
       struct myitem usedItem;
@@ -149,6 +157,8 @@ int main(){
         all_items[6] = chest;
         all_items[7] = key;
         all_items[8] = furniture;
+        all_items[9] = paper;
+
     } else {
         string holderString;
         vector<std::string> words;
@@ -208,6 +218,8 @@ int main(){
 
     //savegame(all_items_length, all_items);
     //call chatbot.cpp
+
+
 
 
     while(chatbot(all_items, all_items_length));
