@@ -20,6 +20,11 @@ struct myitem{
 };
 **/
 void savegame(int all_items_length, myitem all_items[10]){
+  /*
+  savegame function: saves the current game status into a file called savefile.txt
+  inputs: array of myitems all_items, and the length of the array all_items
+  output: savefile.txt is created or updated with the current status of the objects in the game
+  */
   cout << "saving game..." << endl;
   ofstream myfile;
   myfile.open("savefile.txt");
@@ -40,8 +45,7 @@ int main(){
     //string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
     string possibleItems[3][2] = {{"cat", "dog"}, {"painting", "poster"},{"table", "shelve"}};
 
-    cout << "Do you want to load a previous save file? [Y/N]" << endl
-      << ">>> ";
+    cout << "Do you want to load a previous save file? [Y/N]" << endl << ">>> ";
     string saveYesNo;
     getline(cin, saveYesNo);
     bool savefile = false;
@@ -57,7 +61,7 @@ int main(){
       getline(cin,seed_string);
       stringstream seed_stream(seed_string);
       seed_stream>>seed;//not directly using cin>> seed because i don't want an extra EOL at the beginning of the file
-      if (seed==-1){
+      if (seed == -1){
         seed = time(NULL);
       }
       srand(seed);
