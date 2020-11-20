@@ -124,7 +124,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
-    if ((obj == "cat")||(obj == "dog")){
+    if ((obj == "cat")||(obj == "dog")){//kick animal orz.. why...
       cout<<"The "<<obj<< " is angry. It scratches and bites you non stop."<<endl
         <<"You die."<<endl
         <<"Learn the lesson. Do not abuse animal.";
@@ -188,10 +188,32 @@ int look(string obj,myitem all_items[],int all_items_length){
     }else{
       cout<<"Incorrect password!";
     }
-  }else if (all_items[i].knowExistence==0){
-    cout<<"I don't know what is this... yet(?)...(Programmer is trying to tell you: this item exists but you have to find it first))"<<endl;
-  }else if (i==2){
+  }else if (all_items[i].knowExistence==0){// if existence is not known yet
+    cout<<"I don't know what is this... yet(?)...(Programmer is trying to tell you: this item exists but you have to find it first!)"<<endl;
+  }else if (i==2){ //look animal
     cout<<"You look at the "<<obj<<". There's a shiniy object hanging from its neck, but it wouldn't give it to you. Why not exchange it with something else?"<<endl;
+    int i, itemcount = 0;
+    for (i=1; i<all_items_length; i++){// find id of corresponding item
+      if (all_items[i].inPossession==1){
+        if (itemcount==0) cout<<"Here is a list of item in your inventory. Which item would you give the the "<<obj<<" in exchange for the shiny object?(Enter to skip)"<<endl;
+        cout<<"- "<<all_items[i].identity<<endl;
+        itemcount++;
+      }
+    }
+    if (itemcount==0){
+      cout<<"There's nothing in your inventory"<<endl;
+      return 0;
+    }
+    string exchange;
+    cout<<">>> ";
+    getline(cin,exchange);
+    if (exchange==""){
+      return 0;
+    }else if (exchange == all_items[4].identity){
+      cout<<"The "<< obj<<"gives you the shiny item. It's a key!"<<endl
+        <<"You put the key in your inventory."<<endl;
+      all_items[7].inPossession =1;
+    }
   }else if (obj == "turkey"){//look turkey
     cout<<"A beautifully roasted turkey. Looks delicious..."<<endl;
     all_items[4].knowExistence=1;
@@ -216,9 +238,25 @@ int look(string obj,myitem all_items[],int all_items_length){
       }
     }
   }else if (i==7){
-    cout<<"A key. (This discription is over-simple)"<<endl;
-    
+    cout<<"A key. Where can we use it?"<<endl;
+  }else if (i==8){
+    int i, itemcount = 0;
+    for (i=1; i<all_items_length; i++){// find id of corresponding item
+      if (all_items[i].location==obj){
+        if (itemcount==0) cout<<"On the "<< obj<<", there is: "<<endl;
+        cout<<"a "<<all_items[i].identity<<endl;
+        itemcount++;
+        all_items[i].knowExistence=1;
+      }
+
+    }
+    if (itemcount==0) cout<<"There's nothing on the "<<obj<<endl;
+  }else if(i==9){
+    cout<< "There's a line of word on the paper. It writes: "<< all_items[0].location<<endl;
   }
+
+
+
 
 }
 
