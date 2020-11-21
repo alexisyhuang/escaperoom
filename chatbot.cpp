@@ -133,7 +133,7 @@ int getobj(string obj, myitem all_items[], int all_items_length){
 }
 int help(){
   cout<<"You're trapped in a room. Find your way out!"<<endl
-    <<"Phrase your sentances as follows:"<<endl
+    <<"Phrase your sentences as follows:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
     <<"<verb> <object> (eg get key, look table)"<<endl;
 
@@ -163,7 +163,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
   for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }if (i>all_items_length){// no item found
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<<" is."<<endl;
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
