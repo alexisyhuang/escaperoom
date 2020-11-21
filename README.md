@@ -8,6 +8,9 @@
 ### A game description with basic game rules.
 The user wakes up to find himself/herself locked in a room. By chatting with the chatbot, using simple sentances, the user can interact with the environment, and eventually escape from the room.
 
+### Compilation and Execution
+Type make main, and then ./main to execute the main file of the game and to begin playing! Type quit anytime in order to quit the game, which will prompt you to decide whether or not you want to save your progress. You can also save the game at any time by typing save.
+
 ### Code Requirement Fulfillments
 - **1. Generation of random game sets or events** - If the user chooses not to continue a game from a previous save file, a new escape room is generated with randomization in what objects appear in the room. This is implemented with rand() and choosing a random index of an array with possible choices for the randomized elements, such as the type of animal and decoration that appears in the room.
 
