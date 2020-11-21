@@ -15,7 +15,7 @@ There's nothing in your inventory
 >>> The chest is locked. You need to open it with a key.
 >>> On the table, there is: 
 a aquarium
->>> A fish is swimming in the aquarium
+>>> A fish is swimming in the aquarium.
 >>> You got the fish. It's now in your inventory.
 >>> Sorry, I don't understand what you mean. Try rephrasing your input.
 >>> It's already in your inventory.
@@ -32,5 +32,5 @@ You have a key in your inventory. You opened the chest with the key. There's a p
 >>> There has to be a door in the room. But where is it?
 >>> On the wall there is a door and a poster
 >>> It's just a simple, ordinary, useless poster. Well, it's useful as a decoration, I suppose.
->>> The door is locked.On the door, there's a number pad.
-Enter the pass code to open the door: Congratulations! You've escaped from the room. Time to continue with your coding assignment!
+>>> The door is locked. On the door, there's a number pad.
+Enter the passcode to open the door: Congratulations! You've escaped from the room. Time to continue with your coding assignment!
