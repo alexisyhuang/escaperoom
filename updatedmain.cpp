@@ -214,11 +214,16 @@ int main(){
     //cout << all_items[1].identity << endl;
     cout << "Let the story begin..." << endl;
     cout << "You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment." << endl;
-    cout << "A quick glance across the room reveals a door. It looks weak enough that you might be able to kick it down, if you try hard enough..." << endl;
+    cout << "You've got to escape from this room ASAP, or you can't submit your assignment on time!"
+    /**cout << "A quick glance across the room reveals a door. It looks weak enough that you might be able to kick it down, if you try hard enough..." << endl;
     cout << "Luckily, there's a number pad on the door which you could use to make your escape. You need to get home soon to submit that programming assignment, after all." << endl;
     cout << "You see a table across the room, and there's also a " << all_items[2].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
-    cout<< "On the wall, there's a " << all_items[5].identity << ". Maybe that could be useful?" << endl;
+    cout<< "On the wall, there's a " << all_items[5].identity << ". Maybe that could be useful?" << endl;**/
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
+    cout<< "Tips: phrase your sentances as follow"<<endl
+      <<"<verb>(eg. quit, save, quit)"<<endl
+      <<"<verb> <object>"<< endl
+      << "Incomplete list of possibble actions: look/inspect/examine, get, eat, kick..."<<endl;
 
     //savegame(all_items_length, all_items);
     //call chatbot.cpp
