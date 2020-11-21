@@ -1,1 +1,1 @@
-life 0 0 283 0 door 0 0 wall 1 cat 0 0 floor 1 tank 1 0 table 1 fish 1 0 fishtank 1 poster 0 0 wall 1 chest 0 0 floor 1 key 1 1 cat 1 table 0 0 floor 1 paper 1 0 chest 0 
+life 0 0 6915 0 door 0 0 wall 0 dog 0 0 floor 0 turkey 1 0 shelf 0 bone 1 0 turkey 0 painting 0 0 wall 0 chest 0 0 floor 0 key 1 0 dog 0 shelf 0 0 floor 0 paper 1 0 chest 0 
