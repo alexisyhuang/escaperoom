@@ -1,0 +1,8 @@
+N
+-1
+look
+look cat
+kick chest
+kick table
+kick door
+kick cat
