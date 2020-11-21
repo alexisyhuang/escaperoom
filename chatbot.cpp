@@ -57,7 +57,7 @@ int chatbot(myitem all_items[],int all_items_length){
   else if(all_items[0].getable == 1){// change to 0 after implementation
     return 0;
   }else{
-    cout<<"Sorry, I don't understand what you mean"<<endl;
+    cout<<"Sorry, I don't understand what you mean. Try rephrasing your input."<<endl;
   }
 
   //cout<<endl;
@@ -80,7 +80,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
     if ((obj == "turkey")){//kick animal orz.. why...
-      cout<<"You ate the turkey. Remaining is the bone."<<endl
+      cout<<"You ate the turkey. You now have the turkey bone."<<endl
         <<"The bone is now in your inventory"<<endl;
           all_items[i].inPossession = 0;
           all_items[i].location =""; //switch to 0 DIES
@@ -91,7 +91,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
           all_items[4].knowExistence=1;
           all_items[4].getable=0;
     }else if ((obj == "fish")){
-      cout<<"It's raw. You decided not to eat it."<<endl;
+      cout<<"The fish is slimy and raw. You decide not to eat it."<<endl;
     }else {
       cout<<"This item is not edible. meh."<<endl;
     }
@@ -99,7 +99,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
   }else if (all_items[i].knowExistence == 0){
     cout<< "What "<< obj <<"? *doge*"<<endl;
   }else if (all_items[i].inPossession == 0){
-    cout<<"You can only eat items in your inventory"<<endl;
+    cout<<"You can only eat items in your inventory."<<endl;
   }
 }
 
@@ -113,7 +113,7 @@ int getobj(string obj, myitem all_items[], int all_items_length){
     if (all_items[i].identity==obj) break;
   }
   if (i>all_items_length){
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<< " is."<<endl;
 
   }
 
@@ -148,7 +148,7 @@ int invo(myitem all_items[],int all_items_length){
     }
 
   }
-  if (itemcount==0) cout<<"There's nothing in your inventory"<<endl;
+  if (itemcount==0) cout<<"There's nothing in your inventory."<<endl;
 }
 
 int kick(string obj,myitem all_items[],int all_items_length){
@@ -165,18 +165,18 @@ int kick(string obj,myitem all_items[],int all_items_length){
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
     if ((obj == "cat")||(obj == "dog")){//kick animal orz.. why...
-      cout<<"The "<<obj<< " is angry. It scratches and bites you non stop."<<endl
+      cout<<"The "<<obj<< " is angry. It scratches and bites you continuously."<<endl
         <<"You die."<<endl
-        <<"Learn the lesson. Do not abuse animal.(Programmer: Animal abuser doesn't deserve to play our game)"<<endl;
+        <<"We hope you've learned your lesson so you don't abuse animals in your next life. (Programmer: Animal abusers doesn't deserve to play our game!)"<<endl;
         all_items[0].getable = 1;//switch to 0 DIES
     }else if ((obj == "door")){
       if (rand()%5 == 0){
         cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework!:D:D:D (Every thing occurs too suddenly right?)"<<endl;
       }else{
-        cout<<"Nothing interesting happens. Do you want to do that again?"<<endl;
+        cout<<"Nothing interesting happens. Do you want to try doing that again?"<<endl;
       }
     }else {
-      cout<<"Control your temper. Doing so doesn't help.(i.e. programmer did not write any script for kicking this object)"<<endl;
+      cout<<"Control your temper. Kicking this object doesn't help.(i.e. programmer did not write any script for kicking this object)"<<endl;
     }
 
   }else if (all_items[i].knowExistence == 0){
