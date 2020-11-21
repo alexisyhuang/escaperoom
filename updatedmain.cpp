@@ -214,7 +214,7 @@ int main(){
     //cout << all_items[1].identity << endl;
     cout << "Let the story begin..." << endl;
     cout << "You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment." << endl;
-    cout << "You've got to escape from this room ASAP, or you can't submit your assignment on time!"
+    cout << "You've got to escape from this room ASAP, or you can't submit your assignment on time!"<<endl;
     /**cout << "A quick glance across the room reveals a door. It looks weak enough that you might be able to kick it down, if you try hard enough..." << endl;
     cout << "Luckily, there's a number pad on the door which you could use to make your escape. You need to get home soon to submit that programming assignment, after all." << endl;
     cout << "You see a table across the room, and there's also a " << all_items[2].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
