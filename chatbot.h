@@ -15,5 +15,5 @@ int invo(myitem[],int);
 int kick(string, myitem[] ,int);
 int look(string, myitem[] ,int);
 int printallitem(myitem[],int);
-int savegame();
+void savegame(int , myitem[]);
 #endif
