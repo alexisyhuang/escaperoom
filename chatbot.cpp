@@ -91,7 +91,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
   for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }if (i>all_items_length){// no item found
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<<" is."<<endl;
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
