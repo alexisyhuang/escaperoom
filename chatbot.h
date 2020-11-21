@@ -9,11 +9,11 @@ int chatbot(myitem[],int);
 //chatbot other function
 int eat(string, myitem[],int);
 int getobj(string, myitem[],int);
-int help();
-int hint();
+void help();
+void hint();
 int invo(myitem[],int);
 int kick(string, myitem[] ,int);
 int look(string, myitem[] ,int);
-int printallitem(myitem[],int);
+void printallitem(myitem[],int);
 void savegame(int , myitem[]);
 #endif
