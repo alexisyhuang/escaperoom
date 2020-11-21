@@ -57,7 +57,9 @@ int chatbot(myitem all_items[],int all_items_length){
   else if(all_items[0].getable == 1){// change to 0 after implementation
     return 0;
   }else{
-    cout<<"Sorry, I don't understand what you mean."<<endl;
+
+    cout<<"Sorry, I don't understand what you mean. Try rephrasing your input."<<endl;
+
   }
 
   //cout<<endl;
@@ -79,8 +81,9 @@ int eat(string obj,myitem all_items[],int all_items_length){
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
+
     if ((obj == "turkey")){//eat turkey
-      cout<<"You ate the turkey. Remaining is the bone."<<endl
+      cout<<"You ate the turkey. You now have the turkey bone."<<endl
         <<"The bone is now in your inventory"<<endl;
           all_items[i].inPossession = 0;
           all_items[i].location =""; //switch to 0 DIES
@@ -91,7 +94,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
           all_items[4].knowExistence=1;
           all_items[4].getable=0;
     }else if ((obj == "fish")){
-      cout<<"It's raw. You decided not to eat it."<<endl;
+      cout<<"The fish is slimy and raw. You decide not to eat it."<<endl;
     }else {
       cout<<"This item is not edible. meh."<<endl;
     }
@@ -99,7 +102,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
   }else if (all_items[i].knowExistence == 0){
     cout<< "What "<< obj <<"? *doge*"<<endl;
   }else if (all_items[i].inPossession == 0){
-    cout<<"You can only eat items in your inventory"<<endl;
+    cout<<"You can only eat items in your inventory."<<endl;
   }
 }
 
@@ -113,7 +116,7 @@ int getobj(string obj, myitem all_items[], int all_items_length){
     if (all_items[i].identity==obj) break;
   }
   if (i>all_items_length){
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<< " is."<<endl;
 
   }
 
@@ -148,7 +151,7 @@ int invo(myitem all_items[],int all_items_length){
     }
 
   }
-  if (itemcount==0) cout<<"There's nothing in your inventory"<<endl;
+  if (itemcount==0) cout<<"There's nothing in your inventory."<<endl;
 }
 
 int kick(string obj,myitem all_items[],int all_items_length){
@@ -165,19 +168,19 @@ int kick(string obj,myitem all_items[],int all_items_length){
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 0){
     if ((obj == "cat")||(obj == "dog")){//kick animal orz.. why...
-      cout<<"The "<<obj<< " is angry. It scratches and bites you non stop."<<endl
+      cout<<"The "<<obj<< " is angry. It scratches and bites you continuously."<<endl
         <<"You die."<<endl
-        <<"Learn the lesson. Do not abuse animal.(Programmer: Animal abuser doesn't deserve to play our game)"<<endl;
+        <<"We hope you've learned your lesson so you don't abuse animals in your next life. (Programmer: Animal abusers doesn't deserve to play our game!)"<<endl;
         all_items[0].getable = 1;//switch to 0 DIES
     }else if ((obj == "door")){
       if (rand()%5 == 0){
         cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework!:D:D:D (Every thing occurs too suddenly right?)"<<endl;
         all_items[0].getable=1;
       }else{
-        cout<<"Nothing interesting happens. Do you want to do that again?"<<endl;
+        cout<<"Nothing interesting happens. Do you want to try doing that again?"<<endl;
       }
     }else {
-      cout<<"Control your temper. Doing so doesn't help.(i.e. programmer did not write any script for kicking this object)"<<endl;
+      cout<<"Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)"<<endl;
     }
 
   }else if (all_items[i].knowExistence == 0){
@@ -215,7 +218,7 @@ int look(string obj,myitem all_items[],int all_items_length){
   for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }if (i>all_items_length){// no item found
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<<" is."<<endl;
       return 0;
   }
   if (i==1){//door is obviously existing object. So it's coded separatedly
@@ -242,11 +245,11 @@ int look(string obj,myitem all_items[],int all_items_length){
       cout<<"It's playing happily in the corner"<<endl;
       return 0;
     }
-    cout<<"You look at the "<<obj<<". There's a shiniy object hanging from its neck, but it wouldn't give it to you. Why not exchange it with something else?"<<endl;
+    cout<<"You look at the "<<obj<<". It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?"<<endl;
     int i, itemcount = 0;
     for (i=1; i<all_items_length; i++){// find id of corresponding item
       if (all_items[i].inPossession==1){
-        if (itemcount==0) cout<<"Here is a list of item in your inventory. Which item would you give the the "<<obj<<" in exchange for the shiny object?(Enter to skip)"<<endl;
+        if (itemcount==0) cout<<"Here is a list of the items in your inventory. Which item would you like to give the the "<<obj<<" in exchange for the shiny object?(Enter to skip)"<<endl;
         cout<<"- "<<all_items[i].identity<<endl;
         itemcount++;
       }
@@ -278,14 +281,15 @@ int look(string obj,myitem all_items[],int all_items_length){
       cout<<"There's nothing in the tank"<<endl;
     }
   } else if (i==4){//look fish/ look bone
-    cout<< "It doesn't seems like something safely edible by human. And I'm not *that* hungry."<<endl;
+    cout<< "It doesn't seems like something can can be safely consumed by a human. And I'm not *that* hungry."<<endl;
   }else if (i==5){// look painting/ look poster
-    cout<< "It's just a simple ordinary useless "<<obj<<". Well, a decoration."<<endl;
+    cout<< "It's just a simple, ordinary, useless "<<obj<<". Well, it's useful as a decoration, I suppose."<<endl;
   }else if (i==6){//look chest
     if (all_items[9].knowExistence==1){//chest opened
       cout<< "The chest is unlocked."<<endl;
       if (all_items[9].location=="chest"&&all_items[9].inPossession==0){
-        cout<<" There's a piece of paper in the chest"<<endl;
+
+        cout<<" There's a piece of paper in the chest."<<endl;
 
       }
     }else {//chest locked
@@ -312,7 +316,7 @@ int look(string obj,myitem all_items[],int all_items_length){
     }
     if (itemcount==0) cout<<"There's nothing on the "<<obj<<endl;
   }else if(i==9){
-    cout<< "There's a line of word on the paper. It writes: "<< all_items[0].location<<endl;
+    cout<< "There's a line of word on the paper. It says: "<< all_items[0].location<<endl;
   }
 
 
