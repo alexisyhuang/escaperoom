@@ -8,17 +8,7 @@
 #include "chatbot.h"
 
 using namespace std;
-/**
-struct myitem{
-    string identity;
-    //string subtype;
-    //no need for subtype anymore because this is indicated by the position in the array?
-    int getable; // 1 = yes, 0 = no
-  	int inPossession; // 1 = yes, 0 = no
-    string location;
-    int knowExistence;
-};
-**/
+
 void savegame(int all_items_length, myitem all_items[10]){
   /*
   savegame function: saves the current game status into a file called savefile.txt
@@ -53,14 +43,14 @@ int main(){
         savefile = true;
     }
     if (savefile == false) {
-      //initialise room
+      //initialise room by creating objects, some of which have randomized properties. Every time that you run the file, you may be in a room with different objects.
 
       cout<<"Please input integer seed(type -1 to use random seed): ";
       int seed;
       string seed_string;
       getline(cin,seed_string);
       stringstream seed_stream(seed_string);
-      seed_stream>>seed;//not directly using cin>> seed because i don't want an extra EOL at the beginning of the file
+      seed_stream>>seed;//not directly using cin>> seed to avoid an EOL at the beginning of the file
       if (seed == -1){
         seed = time(NULL);
       }
@@ -124,7 +114,7 @@ int main(){
       paper.inPossession = 0;
       paper.location = "chest";
       paper.knowExistence = 0;
-
+      //specialItem and usedItem are dependent on each other and exist in a pair
       struct myitem specialItem;
       struct myitem usedItem;
       if (animal.identity == "cat") {
@@ -152,6 +142,7 @@ int main(){
           specialItem.knowExistence = 0;
 
         }
+	//populate the array all_items with the objects we just created
         all_items[0] = life;
         all_items[1] = door;
         all_items[2] = animal;
@@ -164,9 +155,11 @@ int main(){
         all_items[9] = paper;
 
     } else {
+	//read from savefile.txt
         string holderString;
         vector<std::string> words;
         ifstream myfile ("savefile.txt");
+	//check if the file is able to be opened
         if (myfile.is_open()){
             while (myfile >> holderString) {
                 words.push_back(holderString);
@@ -176,13 +169,12 @@ int main(){
             cout << "Unable to open file" << endl;
             return 0;
         }
+	//populate array all_items with items with the properties as dictated by the savefile
         string name;
-        string holderStringer2;
         int vectorcount=0;
         for(int i = 0; i < all_items_length; i ++){
             name = words[vectorcount];
             struct myitem name;
-            //vectorcount++;
             name.identity = words[vectorcount];
             vectorcount++;
             if (words[vectorcount] == "0") {
@@ -208,30 +200,16 @@ int main(){
 	          all_items[i] = name;
         }
     }
-    //story segment
-    //cout << i;
-    //cout << all_items[0].identity << endl;
-    //cout << all_items[1].identity << endl;
+    //brief introduction for the user
     cout << "Let the story begin..." << endl;
     cout << "You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment." << endl;
     cout << "You've got to escape from this room ASAP, or you can't submit your assignment on time!"<<endl;
-    /**cout << "A quick glance across the room reveals a door. It looks weak enough that you might be able to kick it down, if you try hard enough..." << endl;
-    cout << "Luckily, there's a number pad on the door which you could use to make your escape. You need to get home soon to submit that programming assignment, after all." << endl;
-    cout << "You see a table across the room, and there's also a " << all_items[2].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
-    cout<< "On the wall, there's a " << all_items[5].identity << ". Maybe that could be useful?" << endl;**/
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
     cout<< "Tips: phrase your sentences as follow"<<endl
       <<"<verb>(eg. quit, save)"<<endl
       <<"<verb> <object>"<< endl
       << "Incomplete list of possible actions: look, inspect, examine, get, eat, kick..."<<endl;
 
-    //savegame(all_items_length, all_items);
     //call chatbot.cpp
-
-
-
-
     while(chatbot(all_items, all_items_length));
-
-
 }
