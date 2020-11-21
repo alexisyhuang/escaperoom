@@ -185,11 +185,12 @@ int main(){
     cout << "Let the story begin..." << endl;
     cout << "You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment." << endl;
     cout << "You've got to escape from this room ASAP, or you can't submit your assignment on time!"<<endl;
-    cout << "Examine and interact with the objects in the room to make your escape!" << endl;
-    cout<< "Tips: phrase your sentences as follow"<<endl
+    cout << "Examine and interact with the objects in the room to make your escape!" << endl<<endl;
+    cout<< "Phrase your sentences as follow"<<endl
       <<"<verb>(eg. quit, save)"<<endl
       <<"<verb> <object>"<< endl
       << "Incomplete list of possible actions: look, inspect, examine, get, eat, kick..."<<endl;
+    cout<<"Tips: Dunno where to start? Try to look around!"<<endl;
 
     //call chatbot.cpp
     while(chatbot(all_items, all_items_length));
