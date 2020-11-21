@@ -235,7 +235,7 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
   input: name of object (string), array of structure holding game data, and the length of the array(int)as parameters
   output: 0(for terminating the function without running all the scripts in some cases)
   **/
-  if (obj==""||obj == "floor"||obj == "around"||obj == ""){ //for non item locations
+  if (obj==""||obj == "floor"||obj == "around"||obj == "room"){ //for non item locations
       cout<< "You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is";
       int i,last=0;
       for (i=1; i< all_items_length; i++){
