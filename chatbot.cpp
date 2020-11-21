@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include "structure.h"
 #include "chatbot.h"
-#include "updatedmain.cpp"
+//#include "main.cpp"
 using namespace std;
 
 
