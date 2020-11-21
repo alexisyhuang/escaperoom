@@ -13,7 +13,7 @@ The user wakes up to find himself/herself locked in a room. By chatting with the
 
 - **2. Data structures for storing game status** - Each object in the game is implemented as a myitem object, which has variables such as knowExistence and inPossession that are updated as the user interacts with the objects in order to constantly update the progress made in the game. 
 
-- **3. Dynamic memory management** - A vector is used to read from the savefile txt and resume the game from where the user last left off.
+- **3. Dynamic memory management** - A vector is used to read from the savefile txt and resume the game from where the user last left off. The content of the savefile is pushed into the vector one word at a time, and the data values are then reassigned to the objects to recreate the environment where the user left off.
 
 - **4. File input/output** - savefile.txt is used for saving and loading the game status, where the properties of all of the objects in the master array all_items are printed. To read from the file, a vector is used to reassign these properties to the objects.
 
