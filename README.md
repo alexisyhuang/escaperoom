@@ -6,7 +6,7 @@
 - @alexisyhuang : Huang Alexis Yanyi (3033100984)
 
 ### A game description with basic game rules.
-The user wakes up to find himself/herself locked in a room. By chatting with the chatbot, using simple sentances, the user can interact with the environment, and eventually escape from the room.
+The user wakes up to find himself/herself locked in a room. By chatting with the chatbot, using simple sentances(view full list of possible words at the end of read me), the user can interact with the environment, and eventually escape from the room.
 
 ### Compilation and Execution
 In the bash shell, type `make main` to compile the files, and then `./main` to execute the main file of the game and to begin playing! Type quit anytime in order to quit the game, which will prompt you to decide whether or not you want to save your progress. You can also save the game at any time by typing save.
@@ -47,3 +47,6 @@ In the bash shell, type `make main` to compile the files, and then `./main` to e
     <summary>Items</summary>
   aquarium, bone, cat, chest, dog, door, fish, key, painting, paper, poster, shelf, table, turkey (Please note that items may/may not appear in each game)
 </details>
+
+### Remarks
+test case input_5.txt requires savefile.txt in the same directory to produce output_5.txt
