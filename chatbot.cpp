@@ -91,7 +91,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
   for (i=1; i<=all_items_length; i++){// find id of corresponding item
     if (all_items[i].identity==obj) break;
   }if (i>all_items_length){// no item found
-    cout<< "Sorry, I don't know what is "<<obj<<endl;
+    cout<< "Sorry, I don't know what "<<obj<<" is."<<endl;
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
@@ -157,9 +157,9 @@ void help(){
   output: void
   **/
   cout<<"You're trapped in a room. Find your way out!"<<endl
-    <<"Phrase your sentances as follows:"<<endl
+    <<"Phrase your sentences as follows:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
-    <<"<verb> <object> (eg get key, look table)"<<endl;
+    <<"<verb> <object> (e.g. get key, look table)"<<endl;
 
 }
 void hint(){
@@ -168,7 +168,7 @@ void hint(){
   input: NA
   output: void
   **/
-  cout<<"The door is on the wall. The key is with the animal. The cat (if exists) wants fish. The dog (if exists) wants bone. Look inspect the chest/animal after you find the corresponding action items"<<endl;
+  cout<<"The door is on the wall. The key is with the animal. The cat (if exists) wants fish. The dog (if exists) wants bone. Look inspect the chest/animal after you find the corresponding action items."<<endl;
 }
 int invo(myitem all_items[],int all_items_length){
   /**
@@ -213,7 +213,7 @@ int kick(string obj,myitem all_items[],int all_items_length){//kick objects. tak
         all_items[0].getable = 1;//switch to 0 DIES
     }else if ((obj == "door")){
       if (rand()%5 == 0){
-        cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework!:D:D:D (Every thing occurs too suddenly right?)"<<endl;
+        cout<<"Congratulations! You broke the door and escaped. Time to continue with your coding homework!:D:D:D (Everything occurs too suddenly, right?)"<<endl;
         all_items[0].getable=1;
       }else{
         cout<<"Nothing interesting happens. Do you want to try doing that again?"<<endl;
@@ -270,8 +270,8 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
       cout<<"There has to be a door in the room. But where is it?"<<endl;
       return 0;
     }
-    cout<< "The door is locked.On the door, there's a number pad."<<endl
-      <<"Enter the pass code to open the door: ";
+    cout<< "The door is locked. On the door, there's a number pad."<<endl
+      <<"Enter the passcode to open the door: ";
     string input,x;
     getline(cin,input);
     stringstream input_stream(input);
@@ -286,7 +286,7 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
     cout<<"I don't know what is this... yet(?)...(Programmer is trying to tell you: this item exists but you have to find it first!)"<<endl;
   }else if (i==2){ //look animal
     if (all_items[7].knowExistence){
-      cout<<"It's playing happily in the corner"<<endl;
+      cout<<"It's playing happily in the corner."<<endl;
       return 0;
     }
     cout<<"You look at the "<<obj<<". It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?"<<endl;
@@ -319,10 +319,10 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
     all_items[4].knowExistence=1;
   }else if (obj == "aquarium"){//look aquarium
     if(all_items[4].inPossession==0){
-      cout<<"A fish is swimming in the aquarium"<<endl;
+      cout<<"A fish is swimming in the aquarium."<<endl;
       all_items[4].knowExistence=1;
     }else{
-      cout<<"A half filled/ half empty aquarium. Well, it depends on how you see it, but the fact is that it's useless now."<<endl;
+      cout<<"A half full/ half empty aquarium. Well, it depends on how you see it, but the fact is that it's useless now."<<endl;
     }
   } else if (i==4){//look fish/ look bone
     cout<< "It doesn't seems like anything which can be safely consumed by a human. And I'm not *that* hungry."<<endl;
