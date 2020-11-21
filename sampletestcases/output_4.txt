@@ -1,0 +1,20 @@
+Do you want to load a previous save file? [Y/N]
+>>> Please input integer seed(type -1 to use random seed): Let the story begin...
+You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment.
+You've got to escape from this room ASAP, or you can't submit your assignment on time!
+Examine and interact with the objects in the room to make your escape!
+
+Phrase your sentences as follow
+<verb>(eg. quit, save)
+<verb> <object>
+Incomplete list of possible actions: look, inspect, examine, get, eat, kick...
+Tips: Dunno where to start? Try to look around!
+>>> What door? *doge*
+>>> There has to be a door in the room. But where is it?
+>>> On the wall there is a door and a poster
+>>> Nothing interesting happens. Do you want to try doing that again?
+>>> Sorry, I don't understand what you mean. Try rephrasing your input.
+>>> Nothing interesting happens. Do you want to try doing that again?
+>>> Nothing interesting happens. Do you want to try doing that again?
+>>> Nothing interesting happens. Do you want to try doing that again?
+>>> Congratulations! You broke the door and escaped. Time to continue with your coding homework!:D:D:D (Everything occurs too suddenly, right?)
