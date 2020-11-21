@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <fstream>
 #include <cstdlib>
 #include "structure.h"
 #include "chatbot.h"
