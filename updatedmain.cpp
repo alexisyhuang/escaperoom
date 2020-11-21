@@ -128,7 +128,7 @@ int main(){
       struct myitem specialItem;
       struct myitem usedItem;
       if (animal.identity == "cat") {
-          specialItem.identity = "tank";
+          specialItem.identity = "aquarium";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
           specialItem.location = furniture.identity;
@@ -136,7 +136,7 @@ int main(){
           usedItem.identity = "fish";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
-          usedItem.location = "fishtank";
+          usedItem.location = "aquarium";
           usedItem.knowExistence = 0;
 
         } else {
