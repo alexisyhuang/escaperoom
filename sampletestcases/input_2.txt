@@ -1,0 +1,21 @@
+N
+2
+inspect room
+inspect cat
+examine chest
+look table
+inspect aquarium
+get fish
+kill fish
+get fish
+inspect cat
+fish
+inspect chest
+get paper
+You got the paper. It's now in your inventory.
+see paper
+inspect door
+view wall
+see poster
+inspect door
+4575

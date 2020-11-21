@@ -1,0 +1,11 @@
+N
+2
+kick door
+look door
+look wall
+kick door
+kcik door
+kick door
+kick door
+kick door
+kick door
