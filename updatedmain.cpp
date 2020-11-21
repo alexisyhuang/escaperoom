@@ -43,7 +43,7 @@ int main(){
     myitem all_items[10];
     int all_items_length = 10;
     //string possibleItems[3][2] = {{"steel", "wooden"}, {"cat", "dog"}, {"painting", "poster"}};
-    string possibleItems[3][2] = {{"cat", "dog"}, {"painting", "poster"},{"table", "shelve"}};
+    string possibleItems[3][2] = {{"cat", "dog"}, {"painting", "poster"},{"table", "shelf"}};
 
     cout << "Do you want to load a previous save file? [Y/N]" << endl << ">>> ";
     string saveYesNo;
