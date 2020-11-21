@@ -9,25 +9,6 @@
 
 using namespace std;
 
-void savegame(int all_items_length, myitem all_items[10]){
-  /*
-  savegame function: saves the current game status into a file called savefile.txt
-  inputs: array of myitems all_items, and the length of the array all_items
-  output: savefile.txt is created or updated with the current status of the objects in the game
-  */
-  cout << "saving game..." << endl;
-  ofstream myfile;
-  myfile.open("savefile.txt");
-  if (myfile.is_open()){
-    for(int i = 0; i < all_items_length; i ++){
-        myfile << all_items[i].identity << ' ' << all_items[i].getable << ' ' << all_items[i].inPossession << ' ' << all_items[i].location << ' ' << all_items[i].knowExistence << ' ';
-    }
-    myfile.close();
-  } else {
-  	cout << "Unable to open file." << endl;
-  }
-  cout<<"game saved."<<endl;
-}
 
 int main(){
     myitem all_items[10];
