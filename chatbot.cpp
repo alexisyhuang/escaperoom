@@ -192,7 +192,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
 
 int look(string obj,myitem all_items[],int all_items_length){
   if (obj==""||obj == "floor"||obj == "around"||obj == ""){ //for non item locations
-      cout<< "You look around the room. It's a tiny crowded room. On the floor, there is";
+      cout<< "You look around the room. It's a tiny crowded room surrounded bby the walls . On the floor, there is";
       int i,last=0;
       for (i=1; i< all_items_length; i++){
         if (all_items[i].location == "floor"){
@@ -201,7 +201,7 @@ int look(string obj,myitem all_items[],int all_items_length){
           last=i;
         }
       }
-      cout<< string(all_items[last].identity.length()+4,'\b')<<"and a "<<all_items[last].identity<<"."<<endl;
+      cout<< string(all_items[last].identity.length()+3,'\b')<<"and a "<<all_items[last].identity<<"."<<endl;
       return 0;
   }
   if (obj=="wall"){//for non item locations
