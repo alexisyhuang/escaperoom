@@ -1,0 +1,28 @@
+Do you want to load a previous save file? [Y/N]
+>>> Let the story begin...
+You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment.
+You've got to escape from this room ASAP, or you can't submit your assignment on time!
+Examine and interact with the objects in the room to make your escape!
+
+Phrase your sentences as follow
+<verb>(eg. quit, save)
+<verb> <object>
+Incomplete list of possible actions: look, inspect, examine, get, eat, kick...
+Tips: Dunno where to start? Try to look around!
+>>> You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is a cat, a chest, a table,and a table.
+>>> Inventory
+---------
+- fish
+>>> You look at the cat. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
+Here is a list of the items in your inventory. Which item would you like to give the the cat in exchange for the shiny object?(Enter to skip)
+- fish
+>>> The cat gives you the shiny item. It's a key!
+You put the key in your inventory.
+>>> It's already in your inventory.
+>>> The chest is locked. You need to open it with a key.
+You have a key in your inventory. You opened the chest with the key. There's a piece of paper in the chest
+>>> You got the paper. It's now in your inventory.
+>>> There's a line of word on the paper. It says: 3756
+>>> On the wall there is a door and a poster
+>>> The door is locked. On the door, there's a number pad.
+Enter the passcode to open the door: Congratulations! You've escaped from the room. Time to continue with your coding assignment!

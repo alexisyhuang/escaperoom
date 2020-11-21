@@ -1,0 +1,12 @@
+Y
+look
+inventory
+look cat
+fish
+get key
+inspect chest
+get paper
+see paper
+inspect wall
+inspect door
+3756
