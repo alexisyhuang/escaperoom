@@ -200,7 +200,7 @@ int kick(string obj,myitem all_items[],int all_items_length){//kick objects. tak
 
 int look(string obj,myitem all_items[],int all_items_length){ //look at objects. takes in a name of object (string), the array of structure holding game data, and the length of the array (int)as parameters
   if (obj==""||obj == "floor"||obj == "around"||obj == ""){ //for non item locations
-      cout<< "You look around the room. It's a tiny crowded room surrounded bby the walls . On the floor, there is";
+      cout<< "You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is";
       int i,last=0;
       for (i=1; i< all_items_length; i++){
         if (all_items[i].location == "floor"){
