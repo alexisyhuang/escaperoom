@@ -1,9 +1,5 @@
-**Test Case 1: Dog**
-
 Do you want to load a previous save file? [Y/N]
->>> N
-Please input integer seed(type -1 to use random seed): 1
-Let the story begin...
+>>> Please input integer seed(type -1 to use random seed): Let the story begin...
 You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment.
 You've got to escape from this room ASAP, or you can't submit your assignment on time!
 Examine and interact with the objects in the room to make your escape!
@@ -11,86 +7,33 @@ Tips: phrase your sentences as follow
 <verb>(eg. quit, save)
 <verb> <object>
 Incomplete list of possible actions: look, inspect, examine, get, eat, kick...
->>> look
-You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is a dog, a chest, and a shelf.
->>> look dog
-You look at the dog. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
+>>> You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is a dog, a chest, a shelf,and a shelf.
+>>> You look at the dog. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
 There's nothing in your inventory
->>> look chest
-The chest is locked. You need to open it with a key.
->>> look shelf
-On the shelf, there is: 
+>>> The chest is locked. You need to open it with a key.
+>>> On the shelf, there is: 
 a turkey
->>> look turkey
-A beautifully roasted turkey. Looks delicious...
->>> eat turkey
-You can only eat items in your inventory.
->>> get turkey
-You got the turkey. It's now in your inventory.
->>> eat turkey
-You ate the turkey. You now have the turkey bone.
+>>> A beautifully roasted turkey. Looks delicious...
+>>> You can only eat items in your inventory.
+>>> You got the turkey. It's now in your inventory.
+>>> You ate the turkey. You now have the turkey bone.
 The bone is now in your inventory
->>> look dog
-You look at the dog. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
+>>> You look at the dog. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
 Here is a list of the items in your inventory. Which item would you like to give the the dog in exchange for the shiny object?(Enter to skip)
 - bone
->>> bone
-The dog gives you the shiny item. It's a key!
+>>> The dog gives you the shiny item. It's a key!
 You put the key in your inventory.
->>> inventory
-Inventory
+>>> Inventory
 ---------
 - key
->>> look wall
-On the wall there is a door and a painting
->>> look painting 
-It's just a simple, ordinary, useless painting. Well, it's useful as a decoration, I suppose.
->>> eat key
-This item is not edible. meh.
->>> kick painting
-Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)
->>> look door
-The door is locked.On the door, there's a number pad.
-Enter the pass code to open the door: abc I don't know
-Incorrect password!
->>> kick door
-Nothing interesting happens. Do you want to try doing that again?
->>> look chest
-The chest is locked. You need to open it with a key.
+>>> On the wall there is a door and a painting
+>>> It's just a simple, ordinary, useless painting. Well, it's useful as a decoration, I suppose.
+>>> This item is not edible. meh.
+>>> Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)
+>>> The door is locked.On the door, there's a number pad.
+Enter the pass code to open the door: Incorrect password!
+>>> The chest is locked. You need to open it with a key.
 You have a key in your inventory. You opened the chest with the key. There's a piece of paper in the chest
->>> look paper
-There's a line of word on the paper. It says: 6915
->>> look door
-The door is locked.On the door, there's a number pad.
-Enter the pass code to open the door: 6915
-Congratulations! You've escaped from the room. Time to continue with your coding assignment!
-
-
-**Test Case 3: Kicking the Cat**
-Do you want to load a previous save file? [Y/N]
->>> N
-Please input integer seed(type -1 to use random seed): -1
-Let the story begin...
-You awaken in a small room, your last memory having been peacefully snuggling into bed after a long night of working on your programming assignment.
-You've got to escape from this room ASAP, or you can't submit your assignment on time!
-Examine and interact with the objects in the room to make your escape!
-Tips: phrase your sentences as follow
-<verb>(eg. quit, save)
-<verb> <object>
-Incomplete list of possible actions: look, inspect, examine, get, eat, kick...
->>> look
-You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is a cat, a chest, and a table.
->>> look cat
-You look at the cat. It's quite cute :3 There's a shiny object hanging from its neck, but it doesn't want give it to you so easily. Why not exchange it with something else?
-There's nothing in your inventory
->>> kick chest
-Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)
->>> kick table
-Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)
->>> kick door
-What door? *doge*
->>> kick cat
-The cat is angry. It scratches and bites you continuously.
-You die.
-We hope you've learned your lesson so you don't abuse animals in your next life. (Programmer: Animal abusers doesn't deserve to play our game!)
-
+>>> There's a line of word on the paper. It says: 6915
+>>> The door is locked.On the door, there's a number pad.
+Enter the pass code to open the door: Congratulations! You've escaped from the room. Time to continue with your coding assignment!
