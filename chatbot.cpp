@@ -133,7 +133,7 @@ int getobj(string obj, myitem all_items[], int all_items_length){
 }
 int help(){
   cout<<"You're trapped in a room. Find your way out!"<<endl
-    <<"Phrase your sentances as follow:"<<endl
+    <<"Phrase your sentances as follows:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
     <<"<verb> <object> (eg get key, look table)"<<endl;
 
