@@ -46,7 +46,7 @@ int chatbot(myitem all_items[],int all_items_length){
     line>>obj;
     kick(obj, all_items,all_items_length);
   }
-  else if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")||(firstword=="examine")) {
+  else if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")||(firstword=="examine")||(firstword=="read")) {
     string obj;
     line>>obj;
     look(obj, all_items,all_items_length);
