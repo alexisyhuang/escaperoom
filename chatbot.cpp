@@ -273,12 +273,12 @@ int look(string obj,myitem all_items[],int all_items_length){
   }else if (obj == "turkey"){//look turkey
     cout<<"A beautifully roasted turkey. Looks delicious..."<<endl;
     all_items[4].knowExistence=1;
-  }else if (obj == "tank"){//look tank
+  }else if (obj == "aquarium"){//look aquarium
     if(all_items[4].inPossession==0){
-      cout<<"A fish is swimming in the fish tank"<<endl;
+      cout<<"A fish is swimming in the aquarium"<<endl;
       all_items[4].knowExistence=1;
     }else{
-      cout<<"There's nothing in the tank"<<endl;
+      cout<<"There's nothing in the aquarium."<<endl;
     }
   } else if (i==4){//look fish/ look bone
     cout<< "It doesn't seems like something can can be safely consumed by a human. And I'm not *that* hungry."<<endl;
