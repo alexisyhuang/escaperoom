@@ -26,38 +26,38 @@ int chatbot(myitem all_items[],int all_items_length){
     string obj;
     line>>obj;
     eat(obj, all_items,all_items_length);
-  }
-  if(firstword=="get") {
+  } else if(firstword=="get") {
     string obj;
     line>>obj;
     getobj(obj, all_items,all_items_length);
-  }
-  if(firstword=="help") help();
-  if(firstword=="hint") hint();
-  if(firstword=="inventory") invo(all_items,all_items_length);
-  if((firstword=="kick")||(firstword =="hit")||(firstword=="fight")) {
+  }else if(firstword=="help") help();
+  else if(firstword=="hint") hint();
+  else if(firstword=="inventory") invo(all_items,all_items_length);
+  else if((firstword=="kick")||(firstword =="hit")||(firstword=="fight")) {
     string obj;
     line>>obj;
     kick(obj, all_items,all_items_length);
   }
-  if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")||(firstword=="examine")) {
+  else if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")||(firstword=="examine")) {
     string obj;
     line>>obj;
     look(obj, all_items,all_items_length);
   }
-  if(firstword=="print") printallitem(all_items,all_items_length);
-  if((firstword=="quit")||(firstword =="exit")||(firstword=="close")) {
+  else if(firstword=="print") printallitem(all_items,all_items_length);
+  else if((firstword=="quit")||(firstword =="exit")||(firstword=="close")) {
     cout<<"Do you want to save the game before quitting? [Y/N]";
     string response;
     cin>> response;
     if (response=="Y"||response=="yes") savegame(all_items_length,all_items);
     return 0;// quits
   }
-  if(firstword=="save") savegame(all_items_length,all_items);
+  else if(firstword=="save") savegame(all_items_length,all_items);
 
 
-  if(all_items[0].getable == 1){// change to 0 after implementation
+  else if(all_items[0].getable == 1){// change to 0 after implementation
     return 0;
+  }else{
+    cout<<"Sorry, I don't understand what you mean"<<endl;
   }
 
   //cout<<endl;
@@ -187,7 +187,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
 }
 
 int look(string obj,myitem all_items[],int all_items_length){
-  if (obj==""||obj == "floor"||obj == "around"){ //for non item locations
+  if (obj==""||obj == "floor"||obj == "around"||obj == ""){ //for non item locations
       cout<< "You look around the room. It's a tiny crowded room. On the floor, there is";
       int i,last=0;
       for (i=1; i< all_items_length; i++){
