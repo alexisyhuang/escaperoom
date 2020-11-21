@@ -49,7 +49,7 @@ int main(){
     string saveYesNo;
     getline(cin, saveYesNo);
     bool savefile = false;
-    if ((saveYesNo == "Y")||(saveYesNo == "Y")) {
+    if ((saveYesNo == "Y")||(saveYesNo == "yes")) {
         savefile = true;
     }
     if (savefile == false) {
@@ -71,7 +71,7 @@ int main(){
 
       struct myitem animal;
       animal.identity = possibleItems[0][num1];
-      animal.getable = 1;
+      animal.getable = 0;
       animal.inPossession = 0;
       animal.location = "floor";
       animal.knowExistence = 0;
@@ -106,7 +106,7 @@ int main(){
 
       struct myitem chest;
       chest.identity = "chest";
-      chest.getable = 1;
+      chest.getable = 0;
       chest.inPossession = 0;
       chest.location = "floor";
       chest.knowExistence = 0;
@@ -143,12 +143,12 @@ int main(){
           usedItem.identity = "bone";
           usedItem.getable = 1;
           usedItem.inPossession = 0;
-          usedItem.location = furniture.identity;
+          usedItem.location = "turkey";
           usedItem.knowExistence = 0;
           specialItem.identity = "turkey";
           specialItem.getable = 1;
           specialItem.inPossession = 0;
-          specialItem.location = *&usedItem.location;
+          specialItem.location = furniture.identity;
           specialItem.knowExistence = 0;
 
         }
