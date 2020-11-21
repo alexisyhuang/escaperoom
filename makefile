@@ -10,6 +10,6 @@ main: main.o chatbot.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
-	rm -f *.o
+	rm -f *.o main chatbot
 
 .PHONY: clean
