@@ -220,10 +220,10 @@ int main(){
     cout << "You see a table across the room, and there's also a " << all_items[2].identity << " staring at you judgingly as it sits by a large treasure chest." << endl;
     cout<< "On the wall, there's a " << all_items[5].identity << ". Maybe that could be useful?" << endl;**/
     cout << "Examine and interact with the objects in the room to make your escape!" << endl;
-    cout<< "Tips: phrase your sentances as follow"<<endl
-      <<"<verb>(eg. quit, save, quit)"<<endl
+    cout<< "Tips: phrase your sentences as follow"<<endl
+      <<"<verb>(eg. quit, save)"<<endl
       <<"<verb> <object>"<< endl
-      << "Incomplete list of possibble actions: look/inspect/examine, get, eat, kick..."<<endl;
+      << "Incomplete list of possible actions: look, inspect, examine, get, eat, kick..."<<endl;
 
     //savegame(all_items_length, all_items);
     //call chatbot.cpp
