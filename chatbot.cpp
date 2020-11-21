@@ -22,6 +22,11 @@ int chatbot(myitem all_items[],int all_items_length){
   stringstream line(varline);
   //cout<<endl;
   line>>firstword;
+  if(firstword=="eat") {
+    string obj;
+    line>>obj;
+    eat(obj, all_items,all_items_length);
+  }
   if(firstword=="get") {
     string obj;
     line>>obj;
@@ -35,7 +40,7 @@ int chatbot(myitem all_items[],int all_items_length){
     line>>obj;
     kick(obj, all_items,all_items_length);
   }
-  if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")) {
+  if((firstword=="look")||(firstword =="inspect")||(firstword=="see")||(firstword=="view")||(firstword=="examine")) {
     string obj;
     line>>obj;
     look(obj, all_items,all_items_length);
@@ -61,7 +66,42 @@ int chatbot(myitem all_items[],int all_items_length){
 
 
 //other function implementation
+int eat(string obj,myitem all_items[],int all_items_length){
+  if (obj==""){
+    cout<<"Eat What???"<<endl;
+    return 0;
+  }
+  int i;
+  for (i=1; i<=all_items_length; i++){// find id of corresponding item
+    if (all_items[i].identity==obj) break;
+  }if (i>all_items_length){// no item found
+    cout<< "Sorry, I don't know what is "<<obj<<endl;
+      return 0;
+  }
+  if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
+    if ((obj == "turkey")){//kick animal orz.. why...
+      cout<<"You ate the turkey. Remaining is the bone."<<endl
+        <<"The bone is now in your inventory"<<endl;
+          all_items[i].inPossession = 0;
+          all_items[i].location =""; //switch to 0 DIES
+          all_items[i].knowExistence=0;
+          all_items[i].getable=0;
+          all_items[4].inPossession = 1;
+          all_items[4].location ="inventory";
+          all_items[4].knowExistence=1;
+          all_items[4].getable=0;
+    }else if ((obj == "fish")){
+      cout<<"It's raw. You decided not to eat it."<<endl;
+    }else {
+      cout<<"This item is not edible. meh."<<endl;
+    }
 
+  }else if (all_items[i].knowExistence == 0){
+    cout<< "What "<< obj <<"? *doge*"<<endl;
+  }else if (all_items[i].inPossession == 0){
+    cout<<"You can only eat items in your inventory"<<endl;
+  }
+}
 
 int getobj(string obj, myitem all_items[], int all_items_length){
   int i;
@@ -92,7 +132,7 @@ int help(){
   cout<<"You're trapped in a room. Find your way out!"<<endl
     <<"Phrase your sentances as follow:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
-    <<"<verb> <object> (eg get key, look at table)"<<endl;
+    <<"<verb> <object> (eg get key, look table)"<<endl;
 
 }
 int hint(){
@@ -131,7 +171,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
         all_items[0].getable = 1;//switch to 0 DIES
     }else if ((obj == "door")){
       if (rand()%5 == 0){
-        cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework! (Every thing occurs too suddenly right?)"<<endl;
+        cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework!:D:D:D (Every thing occurs too suddenly right?)"<<endl;
       }else{
         cout<<"Nothing interesting happens. Do you want to do that again?"<<endl;
       }
@@ -147,7 +187,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
 }
 
 int look(string obj,myitem all_items[],int all_items_length){
-  if (obj==""||obj == "floor"){ //for non item locations
+  if (obj==""||obj == "floor"||obj == "around"){ //for non item locations
       cout<< "You look around the room. It's a tiny crowded room. On the floor, there is";
       int i,last=0;
       for (i=1; i< all_items_length; i++){
@@ -166,7 +206,7 @@ int look(string obj,myitem all_items[],int all_items_length){
       all_items[5].knowExistence=1;
       return 0;
   }
-  if (obj=="roof"||obj=="ceiling"){//for non item locations
+  if (obj=="roof"||obj=="ceiling"||obj =="up"){//for non item locations
       cout<< "There's nothing on the ceiling."<<endl;
       return 0;
   }
