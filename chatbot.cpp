@@ -13,13 +13,15 @@ using namespace std;
 
 
 
-/**chatbot function
-to be called by main function.
-takes in the array of structure holding game data, and the length of the array(int) as parameters
-return 1 so the while loop in main() will call it again.
-return 0 if wanting to escape from the loop.
-**/
+
+
+
 int chatbot(myitem all_items[],int all_items_length){
+  /**
+  function: the most important function to be called by main. processes user input and call other functions
+  input: array of structure holding game data, and the length of the array(int)as parameters
+  output: 1 to tell while loop in main function to call again. 0 when the game ends .
+  **/
   //cout<<endl;
   string varline, firstword;
   cout<<">>> ";
@@ -75,8 +77,12 @@ int chatbot(myitem all_items[],int all_items_length){
 
 //other function implementation
 
-
-int eat(string obj,myitem all_items[],int all_items_length){// eats an object takes in name of object (string),the array of structure holding game data, and the length of the array(int) as parameters
+int eat(string obj,myitem all_items[],int all_items_length){
+  /**
+  function:  eats an object
+  input: name of object (string), array of structure holding game data, and the length of the array(int)as parameters
+  output: 0(for terminating the function without running all the scripts in some cases)
+  **/
   if (obj==""){
     cout<<"Eat What???"<<endl;
     return 0;
@@ -91,7 +97,7 @@ int eat(string obj,myitem all_items[],int all_items_length){// eats an object ta
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
 
     if ((obj == "turkey")){//eat turkey
-      cout<<"You ate the turkey. You now have the turkey bone."<<endl
+      cout<<"You ate the turkey. You now have the its bone."<<endl
         <<"The bone is now in your inventory"<<endl;
           all_items[i].inPossession = 0;
           all_items[i].location =""; //switch to 0 DIES
@@ -115,6 +121,11 @@ int eat(string obj,myitem all_items[],int all_items_length){// eats an object ta
 }
 
 int getobj(string obj, myitem all_items[], int all_items_length){// get objects.takes in name of object (string),the array of structure holding game data, and the length of the array(int) as parameters
+  /**
+  function: get an object and put it into inventory
+  input: name of object (string), array of structure holding game data, and the length of the array(int)as parameters
+  output: 0(for terminating the function without running all the scripts in some cases)
+  **/
   int i;
   if (obj==""){
     cout<<"You've got to tell me what you wanna get as well."<<endl;
@@ -139,17 +150,32 @@ int getobj(string obj, myitem all_items[], int all_items_length){// get objects.
     cout<<"You can't get it."<<endl;
   }
 }
-int help(){//print several lines of help which doesn't helps much. takes and return nothing
+void help(){
+  /**
+  function:print several lines of help which doesn't helps much. takes and return nothing
+  input: NA
+  output: void
+  **/
   cout<<"You're trapped in a room. Find your way out!"<<endl
     <<"Phrase your sentances as follows:"<<endl
     <<"<verb> (eg. look, save, quit,)" <<endl
     <<"<verb> <object> (eg get key, look table)"<<endl;
 
 }
-int hint(){//print some hint takes and return nothing
+void hint(){
+  /**
+  function:print some hint
+  input: NA
+  output: void
+  **/
   cout<<"The door is on the wall. The key is with the animal. The cat (if exists) wants fish. The dog (if exists) wants bone. Look inspect the chest/animal after you find the corresponding action items"<<endl;
 }
-int invo(myitem all_items[],int all_items_length){//print inventory. takes in the array of structure holding game data, and the length of the array (int)as parameters
+int invo(myitem all_items[],int all_items_length){
+  /**
+  function:print inventory
+  input: array of structure holding game data, and the length of the array(int)as parameters
+  output: 0
+  **/
   int i, itemcount = 0;
   for (i=1; i<all_items_length; i++){// find id of corresponding item
     if (all_items[i].inPossession==1){
@@ -163,6 +189,11 @@ int invo(myitem all_items[],int all_items_length){//print inventory. takes in th
 }
 
 int kick(string obj,myitem all_items[],int all_items_length){//kick objects. takes in name of object (string),the array of structure holding game data, and the length of the array (int)as parameters
+  /**
+  function: kick an object
+  input: name of object (string), array of structure holding game data, and the length of the array(int)as parameters
+  output: 0(for terminating the function without running all the scripts in some cases)
+  **/
   if (obj==""){
     cout<<"Kick WHAT???"<<endl;
     return 0;
@@ -178,7 +209,7 @@ int kick(string obj,myitem all_items[],int all_items_length){//kick objects. tak
     if ((obj == "cat")||(obj == "dog")){//kick animal orz.. why...
       cout<<"The "<<obj<< " is angry. It scratches and bites you continuously."<<endl
         <<"You die."<<endl
-        <<"We hope you've learned your lesson so you don't abuse animals in your next life. (Programmer: Animal abusers doesn't deserve to play our game!)"<<endl;
+        <<"We hope you've learned your lesson and never abuse animal again. (Programmer: Animal abusers doesn't deserve to play our game!)"<<endl;
         all_items[0].getable = 1;//switch to 0 DIES
     }else if ((obj == "door")){
       if (rand()%5 == 0){
@@ -188,7 +219,7 @@ int kick(string obj,myitem all_items[],int all_items_length){//kick objects. tak
         cout<<"Nothing interesting happens. Do you want to try doing that again?"<<endl;
       }
     }else {
-      cout<<"Control your temper- anger won't solve your problems! Kicking this object doesn't help, except now you have a bruised toe.(i.e. programmer did not write any script for kicking this object)"<<endl;
+      cout<<"Control your temper- anger won't solve your problems! "<<endl;
     }
 
   }else if (all_items[i].knowExistence == 0){
@@ -199,6 +230,11 @@ int kick(string obj,myitem all_items[],int all_items_length){//kick objects. tak
 }
 
 int look(string obj,myitem all_items[],int all_items_length){ //look at objects. takes in a name of object (string), the array of structure holding game data, and the length of the array (int)as parameters
+  /**
+  function: look at an object and describe it.
+  input: name of object (string), array of structure holding game data, and the length of the array(int)as parameters
+  output: 0(for terminating the function without running all the scripts in some cases)
+  **/
   if (obj==""||obj == "floor"||obj == "around"||obj == ""){ //for non item locations
       cout<< "You look around the room. It's a tiny crowded room surrounded by four walls. On the floor, there is";
       int i,last=0;
@@ -286,10 +322,10 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
       cout<<"A fish is swimming in the aquarium"<<endl;
       all_items[4].knowExistence=1;
     }else{
-      cout<<"There's nothing in the aquarium."<<endl;
+      cout<<"A half filled/ half empty aquarium. Well, it depends on how you see it, but the fact is that it's useless now."<<endl;
     }
   } else if (i==4){//look fish/ look bone
-    cout<< "It doesn't seems like something can can be safely consumed by a human. And I'm not *that* hungry."<<endl;
+    cout<< "It doesn't seems like anything which can be safely consumed by a human. And I'm not *that* hungry."<<endl;
   }else if (i==5){// look painting/ look poster
     cout<< "It's just a simple, ordinary, useless "<<obj<<". Well, it's useful as a decoration, I suppose."<<endl;
   }else if (i==6){//look chest
@@ -332,7 +368,13 @@ int look(string obj,myitem all_items[],int all_items_length){ //look at objects.
 
 }
 
-int printallitem(myitem all_items[],int all_items_length){//print array of data structure. takes in  the array of structure holding game data, and the length of the array (int)as parameters
+
+void printallitem(myitem all_items[],int all_items_length){
+  /**
+  function: print array of data structure
+  input: array of structure holding game data, and the length of the array(int)as parameters
+  output: void
+  **/
   for(int i=0; i < all_items_length; i++){
     cout<<"identity: "<<all_items[i].identity<<endl
     <<"getable: "<< all_items[i].getable<<endl
