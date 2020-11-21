@@ -57,7 +57,7 @@ int chatbot(myitem all_items[],int all_items_length){
   else if(all_items[0].getable == 1){// change to 0 after implementation
     return 0;
   }else{
-    cout<<"Sorry, I don't understand what you mean"<<endl;
+    cout<<"Sorry, I don't understand what you mean."<<endl;
   }
 
   //cout<<endl;
@@ -79,7 +79,7 @@ int eat(string obj,myitem all_items[],int all_items_length){
       return 0;
   }
   if (all_items[i].knowExistence == 1 && all_items[i].inPossession == 1){
-    if ((obj == "turkey")){//kick animal orz.. why...
+    if ((obj == "turkey")){//eat turkey
       cout<<"You ate the turkey. Remaining is the bone."<<endl
         <<"The bone is now in your inventory"<<endl;
           all_items[i].inPossession = 0;
@@ -172,6 +172,7 @@ int kick(string obj,myitem all_items[],int all_items_length){
     }else if ((obj == "door")){
       if (rand()%5 == 0){
         cout<<"Congratulations! You broke the door and escpaed. Time to continue with your coding homework!:D:D:D (Every thing occurs too suddenly right?)"<<endl;
+        all_items[0].getable=1;
       }else{
         cout<<"Nothing interesting happens. Do you want to do that again?"<<endl;
       }
@@ -263,6 +264,7 @@ int look(string obj,myitem all_items[],int all_items_length){
       cout<<"The "<< obj<<" gives you the shiny item. It's a key!"<<endl
         <<"You put the key in your inventory."<<endl;
       all_items[7].inPossession =1;
+      all_items[4].inPossession =0;
       all_items[7].knowExistence =1;
     }
   }else if (obj == "turkey"){//look turkey
@@ -284,12 +286,14 @@ int look(string obj,myitem all_items[],int all_items_length){
       cout<< "The chest is unlocked."<<endl;
       if (all_items[9].location=="chest"&&all_items[9].inPossession==0){
         cout<<" There's a piece of paper in the chest"<<endl;
+
       }
     }else {//chest locked
       cout<<"The chest is locked. You need to open it with a key."<<endl;
       if(all_items[7].inPossession==1){
         cout<<"You have a key in your inventory. You opened the chest with the key. There's a piece of paper in the chest"<<endl;
         all_items[9].knowExistence=1;
+        all_items[7].inPossession =0;
       }
     }
   }else if (i==7){
