@@ -7,6 +7,7 @@ int init();
 //chatbot main function
 int chatbot(myitem[],int);
 //chatbot other function
+int eat(string, myitem[],int);
 int getobj(string, myitem[],int);
 int help();
 int hint();
