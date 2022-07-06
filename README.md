@@ -1,7 +1,7 @@
 
 # :lock: Welcome to our virtual escape room! :old_key:
 
-You wake up to find yourself locked in a room... you're not quite sure how you got here, but something doesn't quite feel right. By chatting with the chatbot using simple sentences, interact with the items in the room and break free.
+You wake up to find yourself locked in a room... you're not quite sure how you got here, but something doesn't quite feel right. You also have a programming assignment due tomorrow, so you better get out of here soon to submit it as soon as you can! By chatting with the chatbot using simple sentences, interact with the items in the room and break free.
 
 ### Compilation and Execution
 In the bash shell, type `make main` to compile the files, and then `./main` to execute the main file of the game and to begin playing! Type quit anytime in order to quit the game, which will prompt you to decide whether or not you want to save your progress. You can also save the game at any time by typing save.
